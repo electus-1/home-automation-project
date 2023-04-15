@@ -1,7 +1,9 @@
-let login = document.querySelector(".login");
+let login = document.querySelectorAll(".login");
 let modal = document.querySelector(".modal");
 let wrapper = document.querySelector(".wrapper");
-login.addEventListener("click", (e) => {
-  wrapper.style.opacity = 0.4;
-  modal.style.display = "flex";
-});
+login.forEach((a) =>
+  a.addEventListener("click", (e) => {
+    wrapper.style.opacity = 0.4;
+    modal.style.display = "flex";
+  })
+);
