@@ -1,7 +1,7 @@
 let login = document.querySelectorAll(".login");
 let modal = document.querySelector(".modal");
 let wrapper = document.querySelector(".wrapper");
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 let isOn = false;
 login.forEach((a) =>
   a.addEventListener("click", (e) => {
