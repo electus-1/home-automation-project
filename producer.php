@@ -140,19 +140,12 @@
         <div class="card colors">
             <p class="title">LIGHT COLOR</p>
             <p class="state" data-state="green">GREEN</p>
-            <form action="" class="color-control" method="post">
-                <div>
-                    <label for="red">RED</label>
-                    <input type="radio" name="red" id="red">
-                </div>
-                <div>
-                    <label for="green">GREEN</label>
-                    <input type="radio" name="green" id="green">
-                </div>
-                <div>
-                    <label for="blue">BLUE</label>
-                    <input type="radio" name="blue" id="blue">
-                </div>
+            <form onsubmit="submitColor " action="" class="color-control" method="post">
+                <select name="colorlist" id="colorlist">
+                    <option value="red">RED</option>
+                    <option value="green">GREEN</option>
+                    <option value="blue">BLUE</option>
+                </select>
                 <button type="submit" name="change-color">APPLY CHANGES</button>
             </form>
         </div>
@@ -178,15 +171,11 @@
         <div class="card security">
             <p class="title">SECURITY</p>
             <form action="" class="security-control" method="post">
-                <div> <label for="low">LOW</label>
-                    <input type="radio" name="low" id="low">
-                </div>
-                <div> <label for="high">HIGH</label>
-                    <input type="radio" name="high" id="high">
-                </div>
-                <div> <label for="off">OFF</label>
-                    <input type="radio" name="off" id="off">
-                </div>
+                <select name="sec" id="sec">
+                    <option value="low">LOW</option>
+                    <option value="high">HIGH</option>
+                    <option value="off">OFF</option>
+                </select>
                 <button type="submit" name="security">APPLY CHANGES</button>
             </form>
         </div>
