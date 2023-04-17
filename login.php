@@ -47,10 +47,12 @@ if (isset($_POST['login'])) {
 
         if ($email === $email  && $password === $pw && $isAdmin == 0) {
             echo "Zort not an admin";
-            //redirect to the file you want to
-            header("Location: ./test.php");
+            //redirect to the customer
+            header("Location: ./customer.php");
         } else if (($email === $email  && $password === $pw && $isAdmin == 1)) {
             echo 'Zort admin';
+            //redirect to producer
+            header("Location: ./producer.php");
         } else {
             echo "Wrong password";
         }
