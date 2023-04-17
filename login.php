@@ -1,14 +1,60 @@
 <?php
- $email1 = "a";
- $password1 = "123";
- if (isset($_POST['login'])) {
-  $email = filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-  $password = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+$conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
-    if ($email === "a" && $password === "123") {
-        echo "Zort";
+//write query for all infos
+$sql = 'SELECT email, pw, isAdmin FROM pinfo';
+
+//make query and get result
+$result = mysqli_query($conn, $sql);
+
+//fetch the resulting rows as an array
+$infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+//frees result from memory for good practice
+mysqli_free_result($result);
+
+//close connection if you want to
+//mysqli_close($conn);
+
+print_r($infos);
+
+
+if (isset($_POST['login'])) {
+    //secure the input and get them from the global variable post
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $i = 0;
+    $isEmailFound = false;
+
+    foreach ($infos as $item) {
+        if ($item['email'] === $email) {
+            $isEmailFound = true;
+            break;
+        }
+        $i++;
     }
-    else {
-        echo "Wrong password";
+
+
+    //If input is in the database then get them from the data base
+    //else just show wrong password to the user like the user input the 
+    //wrong password
+    if ($isEmailFound) {
+        //variables from the database
+        $email = $infos[$i]['email'];
+        $pw = $infos[$i]['pw'];
+        $isAdmin = $infos[$i]['isAdmin'];
+
+        if ($email === $email  && $password === $pw && $isAdmin == 0) {
+            echo "Zort not an admin";
+            //redirect to the file you want to
+            header("Location: ./test.php");
+        } else if (($email === $email  && $password === $pw && $isAdmin == 1)) {
+            echo 'Zort admin';
+        } else {
+            echo "Wrong password";
+        }
+    } else {
+        echo 'Wrong Password';
     }
 }

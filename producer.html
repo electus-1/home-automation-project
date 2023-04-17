@@ -17,40 +17,84 @@
         <div class="card">
             <p>LIGHTS</p>
             <p>OFF</p>
-            <button>TURN ON</button>
+            <form action="" class="light-control" method="post">
+                <button type="submit" name="light">TURN ON</button>
+            </form>
         </div>
         <div class="card">
-            <p>TEMPERATURE</p>
-            <p>45.19 C°</p>
+            <p>LIGHT COLOR</p>
+            <p>GREEN</p>
+            <form action="" class="color-control" method="post">
+                <div>
+                    <label for="red">RED</label>
+                    <input type="radio" name="color" id="red">
+                </div>
+                <div>
+                    <label for="green">GREEN</label>
+                    <input type="radio" name="color" id="green">
+                </div>
+                <div>
+                    <label for="blue">BLUE</label>
+                    <input type="radio" name="color" id="blue">
+                </div>
+                <button type="submit" name="change-color">APPLY CHANGES</button>
+            </form>
         </div>
         <div class="card">
             <p>DESIRED TEMPERATURE</p>
-            <div class="temp-control">
-                <button>-</button>
-                <p>45.19 C°</p>
-                <button>+</button>
-            </div>
-            <button>START AIR CONDITIONER</button>
+            <form action="" method="post"
+                style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
+                <div class="temp-control">
+                    <button>-</button>
+                    <p data-value="45">45 C°</p>
+                    <button>+</button>
+                </div>
+                <button type="submit" name="air">START AIR CONDITIONER</button>
+            </form>
         </div>
         <div class="card">
             <p>SOUND SYSTEM</p>
             <p>ON</p>
-            <p>TURN OFF</p>
+            <form action="" method="post">
+                <button type="submit" name="sound">TURN OFF</button>
+            </form>
         </div>
         <div class="card">
             <p>SECURITY</p>
-            <div>
-                <label for="low">LOW</label>
-                <input type="radio" name="security-level" id="low">
-                <label for="high">HIGH</label>
-                <input type="radio" name="security-level" id="high">
-                <label for="off">OFF</label>
-                <input type="radio" name="security-level" id="off">
-            </div>
+            <form action="" class="security-control" method="post">
+                <div> <label for="low">LOW</label>
+                    <input type="radio" name="security-level" id="low">
+                </div>
+                <div> <label for="high">HIGH</label>
+                    <input type="radio" name="security-level" id="high">
+                </div>
+                <div> <label for="off">OFF</label>
+                    <input type="radio" name="security-level" id="off">
+                </div>
+                <button type="submit" name="security">APPLY CHANGES</button>
+            </form>
         </div>
-        <div class="card"></div>
-        <div class="card"></div>
-        <div class="card"></div>
+        <div class="card">
+            <p>DOOR LOCK</p>
+            <p>LOCKED</p>
+            <form action="" method="post">
+                <button type="submit" name="lock">UNLOCK</button>
+            </form>
+        </div>
+        <div class="card">
+            <p>ROOMBA</p>
+            <p>CLEANING</p>
+            <form action="" method="post">
+                <button type="submit" name="roomba">STOP</button>
+            </form>
+        </div>
+        <div class="card">
+            <p>WATER HEATER</p>
+            <p>ON</p>
+            <form action="" method="post">
+                <button type="submit">TURN OFF</button>
+            </form>
+        </div>
     </div>
 </body>
 
