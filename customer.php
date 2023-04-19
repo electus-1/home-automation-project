@@ -1,4 +1,13 @@
 <?php
+//mock data values
+$light = true;
+$color = ['red', 'blue', 'green'];
+$tempature = 45;
+$sound = false;
+$securityS = ['off', 'low', 'high'];
+$door = false;
+$roomba = false;
+$waterHeater = true;
 
 
 /*For all the if statements below, if a certain button is pressed then update the database */
@@ -6,62 +15,32 @@
 // If the button is clicked, update the database
 //mysqli_real_escape_string secures the input we want to send to the data base
 if (isset($_POST['light'])) {
-    $new_value = mysqli_real_escape_string($conn, !$light);
-    $new_sql = "UPDATE device SET light = '$new_value'";
-    if (mysqli_query($conn, $new_sql)) {
-        //success
-    } else {
-        echo 'query error: ' . mysqli_error($conn);
-    }
+
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['sound'])) {
-    $new_value = mysqli_real_escape_string($conn, !$sound);
-    $new_sql = "UPDATE device SET sound = '$new_value'";
-    if (mysqli_query($conn, $new_sql)) {
-        //success
-    } else {
-        echo 'query error: ' . mysqli_error($conn);
-    }
+
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 
 if (isset($_POST['lock'])) {
-    $new_value = mysqli_real_escape_string($conn, !$door);
-    $new_sql = "UPDATE device SET door = '$new_value'";
-    if (mysqli_query($conn, $new_sql)) {
-        //success
-    } else {
-        echo 'query error: ' . mysqli_error($conn);
-    }
+
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['roomba'])) {
-    $new_value = mysqli_real_escape_string($conn, !$roomba);
-    $new_sql = "UPDATE device SET roomba = '$new_value'";
-    if (mysqli_query($conn, $new_sql)) {
-        //success
-    } else {
-        echo 'query error: ' . mysqli_error($conn);
-    }
+
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['heater'])) {
-    $new_value = mysqli_real_escape_string($conn, !$waterHeater);
-    $new_sql = "UPDATE device SET waterHeater = '$new_value'";
-    if (mysqli_query($conn, $new_sql)) {
-        //success
-    } else {
-        echo 'query error: ' . mysqli_error($conn);
-    }
+
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
@@ -69,17 +48,8 @@ if (isset($_POST['heater'])) {
 //whatever is the input change the database accordingly for the color 
 if (isset($_POST['change-color'])) {
     if ($_POST['colorlist'] == 'red') {
-        $new_value = mysqli_real_escape_string($conn, 'red');
-        $new_sql = "UPDATE device SET lightColor = '$new_value'";
-        mysqli_query($conn, $new_sql);
     } else if ($_POST['colorlist'] == 'blue') {
-        $new_value = mysqli_real_escape_string($conn, 'blue');
-        $new_sql = "UPDATE device SET lightColor = '$new_value'";
-        mysqli_query($conn, $new_sql);
     } else if ($_POST['colorlist'] == 'green') {
-        $new_value = mysqli_real_escape_string($conn, 'green');
-        $new_sql = "UPDATE device SET lightColor = '$new_value'";
-        mysqli_query($conn, $new_sql);
     }
     //refresh the page to relod the database
     header('Location: ./customer.php');
@@ -88,17 +58,8 @@ if (isset($_POST['change-color'])) {
 //whatever is the input change the database accordingly for the security
 if (isset($_POST['security'])) {
     if ($_POST['sec'] == 'low') {
-        $new_value = mysqli_real_escape_string($conn, 'low');
-        $new_sql = "UPDATE device SET securityS = '$new_value'";
-        mysqli_query($conn, $new_sql);
     } else if ($_POST['sec'] == 'off') {
-        $new_value = mysqli_real_escape_string($conn, 'off');
-        $new_sql = "UPDATE device SET securityS = '$new_value'";
-        mysqli_query($conn, $new_sql);
     } else if ($_POST['sec'] == 'high') {
-        $new_value = mysqli_real_escape_string($conn, 'high');
-        $new_sql = "UPDATE device SET securityS = '$new_value'";
-        mysqli_query($conn, $new_sql);
     }
     //refresh the page to relod the database
     header('Location: ./customer.php');
@@ -106,14 +67,7 @@ if (isset($_POST['security'])) {
 
 //control air conditioner, later will be implemented
 if (isset($_POST['air'])) {
-    $new_value = mysqli_real_escape_string($conn, $_POST['temp']);
-    $new_sql = "UPDATE device SET tempature = '$new_value'";
-    if (mysqli_query($conn, $new_sql)) {
-        //success
-    } else {
-        echo 'query error: ' . mysqli_error($conn);
-        header('Location: ./customer.php');
-    }
+
     header('Location: ./customer.php');
 }
 ?>

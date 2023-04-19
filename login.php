@@ -11,14 +11,23 @@ if (isset($_POST['login'])) {
     $customerEmail = 'a@gmail.com';
     $customerPw = '1234';
 
+
+    $file = 'mockData.txt';
+
+    //get the data from the specified file
+    $fullData = file_get_contents($file);
+    echo $fullData;
+    $dataArray = explode(',', $users);
+    echo $dataArray;
+
+
+
     if ($email === $customerEmail && $password === $customerPw) {
         echo "Zort not an admin";
         //redirect to the customer
         header("Location: ./customer.php");
     } else if (($email === $producerEmail && $password === $producerPw)) {
         echo 'Zort admin';
-        //redirect to producer
-        header("Location: ./producer.php");
     } else {
     }
 }
@@ -44,6 +53,7 @@ if (isset($_POST['login'])) {
         <button onclick="window.location.href = 'index.html'" class="home"> Home Page </button>
 
     </div>
+    <div>a</div>
 </body>
 
 </html>

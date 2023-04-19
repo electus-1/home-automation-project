@@ -1,6 +1,21 @@
 <?php
 
+//the name of the file that contains the mock data
+$file = 'mockData.php';
 
+//get the data from the specified file
+$fullData = file_get_contents($file);
+$dataArray = explode(',', $users);
+
+//mock data values
+$light = true;
+$color = ['red', 'blue', 'green'];
+$tempature = 45;
+$sound = false;
+$securityS = ['off', 'low', 'high'];
+$door = false;
+$roomba = false;
+$waterHeater = true;
 
 ?>
 
@@ -25,11 +40,11 @@
             <p class="title">LIGHTS</p>
             <p class="state">
                 <?php
-                //shows state of the light(wheter its on or off)
-                if ($light == 0) {
-                    echo 'OFF';
-                } else {
+                //shows state of the light(whether its on or off)
+                if ($light) {
                     echo 'ON';
+                } else {
+                    echo 'OFF';
                 }
 
                 ?>
@@ -39,12 +54,14 @@
             <p class="title">LIGHT COLOR</p>
             <p class="state">
                 <?php
-                //change the button content 
+                //change the button content of colors according to changes
                 if ($color == 'red') {
                     echo 'RED';
                 } else if ($color == 'green') {
                     echo 'GREEN';
                 } else if ($color == 'blue') {
+                    echo 'BLUE';
+                } else {
                     echo 'BLUE';
                 }
 
