@@ -1,29 +1,4 @@
 <?php
-//connects to the sql database
-$conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
-
-//write query for all infos
-$sql = 'SELECT light, lightColor, tempature, sound, securityS, door, roomba, waterHeater FROM device';
-
-//make query and get result
-$result = mysqli_query($conn, $sql);
-
-//fetch the resulting rows as an array
-$infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-//frees result from memory for good practice
-mysqli_free_result($result);
-
-//print_r($infos); //prints the array taken from the database
-//all the infos from the database, selected from $infos array
-$light = $infos[0]['light'];
-$color = $infos[0]['lightColor'];
-$tempature = $infos[0]['tempature'];
-$sound = $infos[0]['sound'];
-$securityS = $infos[0]['securityS'];
-$door = $infos[0]['door'];
-$roomba = $infos[0]['roomba'];
-$waterHeater = $infos[0]['waterHeater'];
 
 
 /*For all the if statements below, if a certain button is pressed then update the database */
