@@ -14,10 +14,18 @@ let roombaButton = document.querySelector(".roomba>form>button");
 let heaterState = document.querySelector(".heater>.state");
 let heaterButton = document.querySelector(".heater>form>button");
 
-lightButton.textContent =
-  lightState.textContent.toLowerCase() === "off" ? "TURN ON" : "TURN OFF";
 
-soundButton.textContent =
-  soundState.textContent.toLowerCase() === "off" ? "TURN ON" : "TURN OFF";
 
-function submitColor() {}
+tempMinus.addEventListener("click", (e) => {
+  let temp = +tempState.getAttribute("data-value");
+  temp -= 1;
+  tempState.setAttribute("data-value", temp);
+  tempState.textContent = `${temp} C°`;
+});
+
+tempPlus.addEventListener("click", (e) => {
+  let temp = +tempState.getAttribute("data-value");
+  temp += 1;
+  tempState.setAttribute("data-value", temp);
+  tempState.textContent = `${temp} C°`;
+});
