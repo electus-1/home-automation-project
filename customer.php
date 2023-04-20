@@ -25,12 +25,50 @@ $waterHeater = $dataArray[7];
 //mysqli_real_escape_string secures the input we want to send to the data base
 if (isset($_POST['light'])) {
 
+
+    // acquire lock
+    $fp = fopen($file, 'r+');
+    flock($fp, LOCK_EX);
+
+    // make changes to data
+    if ($dataArray[0] == 0) {
+        $dataArray[0] = 1;
+    } else {
+        $dataArray[0] = 0;
+    }
+
+    // write updated data back to file
+    file_put_contents($file, implode(',', $dataArray));
+
+    // release lock
+    flock($fp, LOCK_UN);
+    fclose($fp);
+
+
+
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['sound'])) {
 
+    // acquire lock
+    $fp = fopen($file, 'r+');
+    flock($fp, LOCK_EX);
+
+    // make changes to data
+    if ($dataArray[3] == 0) {
+        $dataArray[3] = 1;
+    } else {
+        $dataArray[3] = 0;
+    }
+
+    // write updated data back to file
+    file_put_contents($file, implode(',', $dataArray));
+
+    // release lock
+    flock($fp, LOCK_UN);
+    fclose($fp);
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
@@ -38,18 +76,69 @@ if (isset($_POST['sound'])) {
 
 if (isset($_POST['lock'])) {
 
+    // acquire lock
+    $fp = fopen($file, 'r+');
+    flock($fp, LOCK_EX);
+
+    // make changes to data
+    if ($dataArray[5] == 0) {
+        $dataArray[5] = 1;
+    } else {
+        $dataArray[5] = 0;
+    }
+
+    // write updated data back to file
+    file_put_contents($file, implode(',', $dataArray));
+
+    // release lock
+    flock($fp, LOCK_UN);
+    fclose($fp);
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['roomba'])) {
 
+    // acquire lock
+    $fp = fopen($file, 'r+');
+    flock($fp, LOCK_EX);
+
+    // make changes to data
+    if ($dataArray[6] == 0) {
+        $dataArray[6] = 1;
+    } else {
+        $dataArray[6] = 0;
+    }
+
+    // write updated data back to file
+    file_put_contents($file, implode(',', $dataArray));
+
+    // release lock
+    flock($fp, LOCK_UN);
+    fclose($fp);
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['heater'])) {
 
+    // acquire lock
+    $fp = fopen($file, 'r+');
+    flock($fp, LOCK_EX);
+
+    // make changes to data
+    if ($dataArray[7] == 0) {
+        $dataArray[7] = 1;
+    } else {
+        $dataArray[7] = 0;
+    }
+
+    // write updated data back to file
+    file_put_contents($file, implode(',', $dataArray));
+
+    // release lock
+    flock($fp, LOCK_UN);
+    fclose($fp);
     //refresh the page to relod the database
     header('Location: ./customer.php');
 }
@@ -57,8 +146,45 @@ if (isset($_POST['heater'])) {
 //whatever is the input change the database accordingly for the color 
 if (isset($_POST['change-color'])) {
     if ($_POST['colorlist'] == 'red') {
+
+        // acquire lock
+        $fp = fopen($file, 'r+');
+        flock($fp, LOCK_EX);
+
+        $dataArray[1] = 'red';
+
+        // write updated data back to file
+        file_put_contents($file, implode(',', $dataArray));
+
+        // release lock
+        flock($fp, LOCK_UN);
+        fclose($fp);
     } else if ($_POST['colorlist'] == 'blue') {
+        // acquire lock
+        $fp = fopen($file, 'r+');
+        flock($fp, LOCK_EX);
+
+        $dataArray[1] = 'blue';
+
+        // write updated data back to file
+        file_put_contents($file, implode(',', $dataArray));
+
+        // release lock
+        flock($fp, LOCK_UN);
+        fclose($fp);
     } else if ($_POST['colorlist'] == 'green') {
+        // acquire lock
+        $fp = fopen($file, 'r+');
+        flock($fp, LOCK_EX);
+
+        $dataArray[1] = 'green';
+
+        // write updated data back to file
+        file_put_contents($file, implode(',', $dataArray));
+
+        // release lock
+        flock($fp, LOCK_UN);
+        fclose($fp);
     }
     //refresh the page to relod the database
     header('Location: ./customer.php');
@@ -67,8 +193,44 @@ if (isset($_POST['change-color'])) {
 //whatever is the input change the database accordingly for the security
 if (isset($_POST['security'])) {
     if ($_POST['sec'] == 'low') {
+        // acquire lock
+        $fp = fopen($file, 'r+');
+        flock($fp, LOCK_EX);
+
+        $dataArray[4] = 'low';
+
+        // write updated data back to file
+        file_put_contents($file, implode(',', $dataArray));
+
+        // release lock
+        flock($fp, LOCK_UN);
+        fclose($fp);
     } else if ($_POST['sec'] == 'off') {
+        // acquire lock
+        $fp = fopen($file, 'r+');
+        flock($fp, LOCK_EX);
+
+        $dataArray[4] = 'off';
+
+        // write updated data back to file
+        file_put_contents($file, implode(',', $dataArray));
+
+        // release lock
+        flock($fp, LOCK_UN);
+        fclose($fp);
     } else if ($_POST['sec'] == 'high') {
+        // acquire lock
+        $fp = fopen($file, 'r+');
+        flock($fp, LOCK_EX);
+
+        $dataArray[4] = 'high';
+
+        // write updated data back to file
+        file_put_contents($file, implode(',', $dataArray));
+
+        // release lock
+        flock($fp, LOCK_UN);
+        fclose($fp);
     }
     //refresh the page to relod the database
     header('Location: ./customer.php');
