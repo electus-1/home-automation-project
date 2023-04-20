@@ -46,7 +46,7 @@ if (isset($_POST['light'])) {
 
 
 
-    //refresh the page to relod the database
+    //refresh the page to relod
     header('Location: ./customer.php');
 }
 
@@ -69,7 +69,7 @@ if (isset($_POST['sound'])) {
     // release lock
     flock($fp, LOCK_UN);
     fclose($fp);
-    //refresh the page to relod the database
+    //refresh the page to relod 
     header('Location: ./customer.php');
 }
 
@@ -93,7 +93,7 @@ if (isset($_POST['lock'])) {
     // release lock
     flock($fp, LOCK_UN);
     fclose($fp);
-    //refresh the page to relod the database
+    //refresh the page to relod 
     header('Location: ./customer.php');
 }
 
@@ -116,7 +116,7 @@ if (isset($_POST['roomba'])) {
     // release lock
     flock($fp, LOCK_UN);
     fclose($fp);
-    //refresh the page to relod the database
+    //refresh the page to relod 
     header('Location: ./customer.php');
 }
 
@@ -139,7 +139,7 @@ if (isset($_POST['heater'])) {
     // release lock
     flock($fp, LOCK_UN);
     fclose($fp);
-    //refresh the page to relod the database
+    //refresh the page to relod 
     header('Location: ./customer.php');
 }
 
@@ -186,7 +186,7 @@ if (isset($_POST['change-color'])) {
         flock($fp, LOCK_UN);
         fclose($fp);
     }
-    //refresh the page to relod the database
+    //refresh the page to relod
     header('Location: ./customer.php');
 }
 
@@ -232,7 +232,7 @@ if (isset($_POST['security'])) {
         flock($fp, LOCK_UN);
         fclose($fp);
     }
-    //refresh the page to relod the database
+    //refresh the page to relod 
     header('Location: ./customer.php');
 }
 

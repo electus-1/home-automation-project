@@ -18,6 +18,7 @@ if (isset($_POST['login'])) {
         header("Location: ./customer.php");
     } else if (($email === $producerEmail && $password === $producerPw)) {
         echo 'Zort admin';
+        //redirect to the producer
         header("Location: ./producer.php");
     } else {
     }
