@@ -12,16 +12,6 @@ if (isset($_POST['login'])) {
     $customerPw = '1234';
 
 
-    $file = 'mockData.txt';
-
-    //get the data from the specified file
-    $fullData = file_get_contents($file);
-    echo $fullData;
-    $dataArray = explode(',', $users);
-    echo $dataArray;
-
-
-
     if ($email === $customerEmail && $password === $customerPw) {
         echo "Zort not an admin";
         //redirect to the customer
