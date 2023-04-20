@@ -1,21 +1,22 @@
 <?php
 
-//the name of the file that contains the mock data
-$file = 'mockData.php';
+$file = 'mockData.txt';
 
 //get the data from the specified file
 $fullData = file_get_contents($file);
-$dataArray = explode(',', $users);
+$dataArray = explode(',', $fullData);
+
 
 //mock data values
-$light = true;
-$color = ['red', 'blue', 'green'];
-$tempature = 45;
-$sound = false;
-$securityS = ['off', 'low', 'high'];
-$door = false;
-$roomba = false;
-$waterHeater = true;
+$light = $dataArray[0];
+$color = $dataArray[1];
+$tempature = $dataArray[2];
+$sound = $dataArray[3];
+$securityS = $dataArray[4];
+$door = $dataArray[5];
+$roomba = $dataArray[6];
+$waterHeater = $dataArray[7];
+
 
 ?>
 
