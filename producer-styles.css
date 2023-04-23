@@ -3,6 +3,9 @@ body {
   margin: 0;
 }
 
+p {
+  font-size: 1.5rem;
+}
 .cards {
   margin: 0 auto;
   margin-top: 32px;
@@ -17,8 +20,8 @@ body {
 }
 
 .card {
-  height: 200px;
-  width: 250px;
+  min-height: 200px;
+  min-width: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -65,15 +68,15 @@ body {
 }
 
 .title {
-  color: #e86a33;
+  color: #FC2947;
 }
 
 .state {
-  color: #3882f6;
+  color: #7149C6;
 }
 
 button {
-  background-color: #87cbb9;
+  background-color: #3882f6;
   border-radius: 15px;
   border: 1px solid transparent;
   font-size: 16px;
