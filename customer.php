@@ -265,6 +265,7 @@ if (isset($_POST['air'])) {
     <title>AutoHome-Customer</title>
     <link rel="stylesheet" href="producer-styles.css">
     <script src="producer.js" defer></script>
+    <script src="display.js" defer></script>
 </head>
 
 <body>
