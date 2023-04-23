@@ -29,7 +29,7 @@ $waterHeater = $dataArray[7];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoHome-Producer</title>
     <link rel="stylesheet" href="producer-styles.css">
-    <script src="display.js" defer></script>
+    <script src="displayProducer.js" defer></script>
 </head>
 
 <body>
@@ -179,11 +179,11 @@ $waterHeater = $dataArray[7];
                 ?>
             </p>
             <p class="water-temp">
-                <?php 
+                <?php
                 echo rand(30, 40);
-                ?>  
+                ?>
             </p>
-            
+
         </div>
     </div>
 </body>
