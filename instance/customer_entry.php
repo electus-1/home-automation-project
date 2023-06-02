@@ -22,7 +22,7 @@ $bedroom = $infos[0]['bedroom'];
 $emptyroom = $infos[0]['emptyroom'];
 
 //get the email from the login.php file to know specific user's infos
-$email = $_GET['variable'];
+
 echo ($email);
 print_r($infos);
 
@@ -50,49 +50,50 @@ print_r($infos);
         <?php
         if ($livingroom != 0) {
             for ($i = 0; $i < $livingroom; $i++) {
-                echo ('<div class="card living-room">
-                <p class="title">Living Room</p>
-            </div>');
+                echo (" <a href='./customer_room.php?variable2=livingroom&variable={$email}'> <div class='card living-room'>
+                <p class='title'>Living Room</p>
+                </a>
+            </div>");
             }
         }
 
         if ($kitchen != 0) {
             for ($i = 0; $i < $kitchen; $i++) {
-                echo ('<div class="card kitchen">
-                <p class="title">Kitchen</p>
-            </div>');
+                echo (" <a href='./customer_room.php?variable2=kitchen&variable={$email}'><div class='card kitchen'>
+                <p class='title'>Kitchen</p>
+            </div></a>");
             }
         }
 
         if ($bathroom != 0) {
             for ($i = 0; $i < $bathroom; $i++) {
-                echo ('<div class="card bathroom">
-                <p class="title">Bathroom</p>
-            </div>');
+                echo (" <a href='./customer_room.php?variable2=bathroom&variable={$email}'><div class='card bathroom'>
+                <p class='title'>Bathroom</p>
+            </div></a>");
             }
         }
 
         if ($hallway != 0) {
             for ($i = 0; $i < $hallway; $i++) {
-                echo (' <div class="card hallway">
-                <p class="title">Hallway</p>
-            </div>');
+                echo ("  <a href='./customer_room.php?variable2=hallway&variable={$email}'><div class='card hallway'>
+                <p class='title'>Hallway</p>
+            </div></a>");
             }
         }
 
         if ($bedroom != 0) {
             for ($i = 0; $i < $bedroom; $i++) {
-                echo (' <div class="card bedroom">
-                <p class="title">Bedroom</p>
-            </div>');
+                echo (" <a href='./customer_room.php?variable2=bedroom&variable={$email}'> <div class='card bedroom'>
+                <p class='title'>Bedroom</p>
+            </div></a>");
             }
         }
 
         if ($emptyroom != 0) {
             for ($i = 0; $i < $emptyroom; $i++) {
-                echo (' <div class="card emptyroom">
-                <p class="title">Empty Room</p>
-            </div>');
+                echo (" <a href='./customer_room.php?variable2=emptyroom&variable={$email}'> <div class='card emptyroom'>
+                <p class='title'>Empty Room</p>
+            </div></a>");
             }
         }
 
@@ -101,7 +102,9 @@ print_r($infos);
         ?>
 
         <div class="card emptyroom">
-            <p class="title">Add</p>
+            <a href="./add_room.php">
+                <p class="title">Add</p>
+            </a>
         </div>
 
 
