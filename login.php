@@ -48,11 +48,11 @@ if (isset($_POST['login'])) {
         if ($email === $email  && $password === $pw && $isAdmin == 0) {
             echo "Zort not an admin";
             //redirect to the customer
-            header("Location: ./customer.php");
+            header("Location: ./instance/customer_entry.php");
         } else if (($email === $email  && $password === $pw && $isAdmin == 1)) {
             echo 'Zort admin';
             //redirect to producer
-            header("Location: ./producer.php");
+            header("Location: ./instance/producer_entry.php");
         } else {
             echo "Wrong password";
         }

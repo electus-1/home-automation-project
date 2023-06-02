@@ -15,7 +15,7 @@ $infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
 //frees result from memory for good practice
 mysqli_free_result($result);
 
-print_r($infos);
+//print_r($infos);
 $light = $infos[0]['light'];
 $color = $infos[0]['lightColor'];
 $sound = $infos[0]['sound'];
@@ -23,6 +23,7 @@ $door = $infos[0]['door'];
 $securityS = $infos[0]['securityS'];
 $roomba = $infos[0]['roomba'];
 $waterHeater = $infos[0]['waterHeater'];
+$tempature = $infos[0]['tempature'];
 
 
 /*For all the if statements below, if a certain button is pressed then update the database */
@@ -134,6 +135,18 @@ if (isset($_POST['security'])) {
     // Update the database with the selected security option
     $new_value = mysqli_real_escape_string($conn, $selectedSec);
     $new_sql = "UPDATE device SET securityS = '$new_value'";
+    mysqli_query($conn, $new_sql);
+
+    //refresh the page to relod the database
+    header('Location: ./customer.php');
+}
+
+if (isset($_POST['air'])) {
+    $selectedDeg = $_POST['temp'];
+
+    // Update the database with the entered value
+    $new_value = mysqli_real_escape_string($conn, $selectedDeg);
+    $new_sql = "UPDATE device SET tempature = '$new_value'";
     mysqli_query($conn, $new_sql);
 
     //refresh the page to relod the database
