@@ -4,7 +4,7 @@
 $conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
 //write query for all infos
-$sql = 'SELECT light, lightColor, tempature, sound, securityS, door, roomba, waterHeater FROM device';
+$sql = 'SELECT light, lightColor, tempature, sound, securityS, door, roomba, waterHeater, email FROM device';
 
 //make query and get result
 $result = mysqli_query($conn, $sql);
@@ -16,15 +16,16 @@ $infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 
 //print_r($infos);
-$light = $infos[0]['light'];
-$color = $infos[0]['lightColor'];
-$sound = $infos[0]['sound'];
-$door = $infos[0]['door'];
-$securityS = $infos[0]['securityS'];
-$roomba = $infos[0]['roomba'];
-$waterHeater = $infos[0]['waterHeater'];
-$tempature = $infos[0]['tempature'];
-
+$last = count($infos) - 1;
+$light = $infos[$last]['light'];
+$color = $infos[$last]['lightColor'];
+$sound = $infos[$last]['sound'];
+$door = $infos[$last]['door'];
+$securityS = $infos[$last]['securityS'];
+$roomba = $infos[$last]['roomba'];
+$waterHeater = $infos[$last]['waterHeater'];
+$tempature = $infos[$last]['tempature'];
+$email = 'a@gmail.com';
 
 /*For all the if statements below, if a certain button is pressed then update the database */
 
@@ -36,7 +37,8 @@ if (isset($_POST['light'])) {
     ($light == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "UPDATE device SET light = '$new_value'";
+    $new_sql = "INSERT INTO device VALUES ({$new_value}, '{$color}', {$tempature}, {$sound}, '{$securityS}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
+    //$new_sql = "UPDATE device SET light = '$new_value'";
     if (mysqli_query($conn, $new_sql)) {
         //success
     } else {
@@ -52,7 +54,8 @@ if (isset($_POST['sound'])) {
     ($sound == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "UPDATE device SET sound = '$new_value'";
+    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$new_value}, '{$securityS}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
+
     if (mysqli_query($conn, $new_sql)) {
         //success
     } else {
@@ -70,7 +73,8 @@ if (isset($_POST['lock'])) {
     ($door == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "UPDATE device SET door = '$new_value'";
+    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$sound}, '{$securityS}', {$new_value}, {$roomba}, {$waterHeater}, '{$email}')";
+
     if (mysqli_query($conn, $new_sql)) {
         //success
     } else {
@@ -86,7 +90,8 @@ if (isset($_POST['roomba'])) {
     ($roomba == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "UPDATE device SET roomba = '$new_value'";
+    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$sound}, '{$securityS}', {$door}, {$new_value}, {$waterHeater}, '{$email}')";
+
     if (mysqli_query($conn, $new_sql)) {
         //success
     } else {
@@ -102,7 +107,8 @@ if (isset($_POST['heater'])) {
     ($waterHeater == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "UPDATE device SET waterHeater = '$new_value'";
+    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$sound}, '{$securityS}', {$door}, {$roomba}, {$new_value}, '{$email}')";
+
     if (mysqli_query($conn, $new_sql)) {
         //success
     } else {
@@ -119,7 +125,8 @@ if (isset($_POST['change-color'])) {
 
     // Update the database with the selected color
     $new_value = mysqli_real_escape_string($conn, $selectedColor);
-    $new_sql = "UPDATE device SET lightColor = '$new_value'";
+    $new_sql = "INSERT INTO device VALUES ({$light}, '{$new_value}', {$tempature}, {$sound}, '{$securityS}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
+
     mysqli_query($conn, $new_sql);
 
     echo ('Button pushed');
@@ -134,7 +141,8 @@ if (isset($_POST['security'])) {
 
     // Update the database with the selected security option
     $new_value = mysqli_real_escape_string($conn, $selectedSec);
-    $new_sql = "UPDATE device SET securityS = '$new_value'";
+    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$sound}, '{$new_value}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
+
     mysqli_query($conn, $new_sql);
 
     //refresh the page to relod the database
@@ -146,7 +154,8 @@ if (isset($_POST['air'])) {
 
     // Update the database with the entered value
     $new_value = mysqli_real_escape_string($conn, $selectedDeg);
-    $new_sql = "UPDATE device SET tempature = '$new_value'";
+    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$new_value}, {$sound}, '{$securityS}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
+
     mysqli_query($conn, $new_sql);
 
     //refresh the page to relod the database

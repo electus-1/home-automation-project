@@ -47,8 +47,11 @@ if (isset($_POST['login'])) {
 
         if ($email === $email  && $password === $pw && $isAdmin == 0) {
             echo "Zort not an admin";
+
+            //send email to the customer_entry.php
+            $url = './instance/customer_entry.php?variable=' . urlencode($email);
             //redirect to the customer
-            header("Location: ./instance/customer_entry.php");
+            header("Location: {$url}");
         } else if (($email === $email  && $password === $pw && $isAdmin == 1)) {
             echo 'Zort admin';
             //redirect to producer

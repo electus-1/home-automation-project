@@ -44,6 +44,8 @@ $waterHeater = $infos[0]['waterHeater'];
     <div class="header">
         <h1>Producer Dashboard</h1>
         <a href="index.html">Logout</a>
+        <a href="./instance/producer_entry.php">Back</a>
+
     </div>
     <div class="cards">
         <div class="card">
