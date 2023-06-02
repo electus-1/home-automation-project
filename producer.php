@@ -28,8 +28,8 @@ $waterHeater = $dataArray[7];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoHome-Producer</title>
-    <link rel="stylesheet" href="producer-styles.css">
-    <script src="displayProducer.js" defer></script>
+    <link rel="stylesheet" href="./styles/producer-styles.css">
+    <script src="./script/displayProducer.js" defer></script>
 </head>
 
 <body>

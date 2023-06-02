@@ -263,9 +263,9 @@ if (isset($_POST['air'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutoHome-Customer</title>
-    <link rel="stylesheet" href="producer-styles.css">
-    <script src="producer.js" defer></script>
-    <script src="displayCustomer.js" defer></script>
+    <link rel="stylesheet" href="./styles/producer-styles.css">
+    <script src="./script/producer.js" defer></script>
+    <script src="./script/displayCustomer.js" defer></script>
 </head>
 
 <body>
