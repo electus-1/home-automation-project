@@ -1,22 +1,28 @@
 <?php
 
 
-$file = 'mockData.txt';
+$conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
-//get the data from the specified file
-$fullData = file_get_contents($file);
-$dataArray = explode(',', $fullData);
+//write query for all infos
+$sql = 'SELECT light, lightColor, tempature, sound, securityS, door, roomba, waterHeater FROM device';
 
+//make query and get result
+$result = mysqli_query($conn, $sql);
 
-//mock data values
-$light = $dataArray[0];
-$color = $dataArray[1];
-$tempature = $dataArray[2];
-$sound = $dataArray[3];
-$securityS = $dataArray[4];
-$door = $dataArray[5];
-$roomba = $dataArray[6];
-$waterHeater = $dataArray[7];
+//fetch the resulting rows as an array
+$infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+//frees result from memory for good practice
+mysqli_free_result($result);
+
+print_r($infos);
+$light = $infos[0]['light'];
+$color = $infos[0]['lightColor'];
+$sound = $infos[0]['sound'];
+$door = $infos[0]['door'];
+$securityS = $infos[0]['securityS'];
+$roomba = $infos[0]['roomba'];
+$waterHeater = $infos[0]['waterHeater'];
 
 
 /*For all the if statements below, if a certain button is pressed then update the database */
@@ -24,233 +30,113 @@ $waterHeater = $dataArray[7];
 // If the button is clicked, update the database
 //mysqli_real_escape_string secures the input we want to send to the data base
 if (isset($_POST['light'])) {
+    //if light is 1 then val is 0 and vice versa
+    $val = '';
+    ($light == 1) ? $val = 0 : $val = 1;
 
-
-    // acquire lock
-    $fp = fopen($file, 'r+');
-    flock($fp, LOCK_EX);
-
-    // make changes to data
-    if ($dataArray[0] == 0) {
-        $dataArray[0] = 1;
+    $new_value = mysqli_real_escape_string($conn, $val);
+    $new_sql = "UPDATE device SET light = '$new_value'";
+    if (mysqli_query($conn, $new_sql)) {
+        //success
     } else {
-        $dataArray[0] = 0;
+        echo 'query error: ' . mysqli_error($conn);
     }
 
-    // write updated data back to file
-    file_put_contents($file, implode(',', $dataArray));
-
-    // release lock
-    flock($fp, LOCK_UN);
-    fclose($fp);
-
-
-
-    //refresh the page to relod
+    //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['sound'])) {
+    $val = '';
+    ($sound == 1) ? $val = 0 : $val = 1;
 
-    // acquire lock
-    $fp = fopen($file, 'r+');
-    flock($fp, LOCK_EX);
-
-    // make changes to data
-    if ($dataArray[3] == 0) {
-        $dataArray[3] = 1;
+    $new_value = mysqli_real_escape_string($conn, $val);
+    $new_sql = "UPDATE device SET sound = '$new_value'";
+    if (mysqli_query($conn, $new_sql)) {
+        //success
     } else {
-        $dataArray[3] = 0;
+        echo 'query error: ' . mysqli_error($conn);
     }
 
-    // write updated data back to file
-    file_put_contents($file, implode(',', $dataArray));
-
-    // release lock
-    flock($fp, LOCK_UN);
-    fclose($fp);
-    //refresh the page to relod 
+    //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 
 if (isset($_POST['lock'])) {
 
-    // acquire lock
-    $fp = fopen($file, 'r+');
-    flock($fp, LOCK_EX);
+    $val = '';
+    ($door == 1) ? $val = 0 : $val = 1;
 
-    // make changes to data
-    if ($dataArray[5] == 0) {
-        $dataArray[5] = 1;
+    $new_value = mysqli_real_escape_string($conn, $val);
+    $new_sql = "UPDATE device SET door = '$new_value'";
+    if (mysqli_query($conn, $new_sql)) {
+        //success
     } else {
-        $dataArray[5] = 0;
+        echo 'query error: ' . mysqli_error($conn);
     }
 
-    // write updated data back to file
-    file_put_contents($file, implode(',', $dataArray));
-
-    // release lock
-    flock($fp, LOCK_UN);
-    fclose($fp);
-    //refresh the page to relod 
+    //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['roomba'])) {
+    $val = '';
+    ($roomba == 1) ? $val = 0 : $val = 1;
 
-    // acquire lock
-    $fp = fopen($file, 'r+');
-    flock($fp, LOCK_EX);
-
-    // make changes to data
-    if ($dataArray[6] == 0) {
-        $dataArray[6] = 1;
+    $new_value = mysqli_real_escape_string($conn, $val);
+    $new_sql = "UPDATE device SET roomba = '$new_value'";
+    if (mysqli_query($conn, $new_sql)) {
+        //success
     } else {
-        $dataArray[6] = 0;
+        echo 'query error: ' . mysqli_error($conn);
     }
 
-    // write updated data back to file
-    file_put_contents($file, implode(',', $dataArray));
-
-    // release lock
-    flock($fp, LOCK_UN);
-    fclose($fp);
-    //refresh the page to relod 
+    //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 if (isset($_POST['heater'])) {
+    $val = '';
+    ($waterHeater == 1) ? $val = 0 : $val = 1;
 
-    // acquire lock
-    $fp = fopen($file, 'r+');
-    flock($fp, LOCK_EX);
-
-    // make changes to data
-    if ($dataArray[7] == 0) {
-        $dataArray[7] = 1;
+    $new_value = mysqli_real_escape_string($conn, $val);
+    $new_sql = "UPDATE device SET waterHeater = '$new_value'";
+    if (mysqli_query($conn, $new_sql)) {
+        //success
     } else {
-        $dataArray[7] = 0;
+        echo 'query error: ' . mysqli_error($conn);
     }
 
-    // write updated data back to file
-    file_put_contents($file, implode(',', $dataArray));
-
-    // release lock
-    flock($fp, LOCK_UN);
-    fclose($fp);
-    //refresh the page to relod 
+    //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 //whatever is the input change the database accordingly for the color 
 if (isset($_POST['change-color'])) {
-    if ($_POST['colorlist'] == 'red') {
+    $selectedColor = $_POST['colorlist'];
 
-        // acquire lock
-        $fp = fopen($file, 'r+');
-        flock($fp, LOCK_EX);
+    // Update the database with the selected color
+    $new_value = mysqli_real_escape_string($conn, $selectedColor);
+    $new_sql = "UPDATE device SET lightColor = '$new_value'";
+    mysqli_query($conn, $new_sql);
 
-        $dataArray[1] = 'red';
+    echo ('Button pushed');
 
-        // write updated data back to file
-        file_put_contents($file, implode(',', $dataArray));
-
-        // release lock
-        flock($fp, LOCK_UN);
-        fclose($fp);
-    } else if ($_POST['colorlist'] == 'blue') {
-        // acquire lock
-        $fp = fopen($file, 'r+');
-        flock($fp, LOCK_EX);
-
-        $dataArray[1] = 'blue';
-
-        // write updated data back to file
-        file_put_contents($file, implode(',', $dataArray));
-
-        // release lock
-        flock($fp, LOCK_UN);
-        fclose($fp);
-    } else if ($_POST['colorlist'] == 'green') {
-        // acquire lock
-        $fp = fopen($file, 'r+');
-        flock($fp, LOCK_EX);
-
-        $dataArray[1] = 'green';
-
-        // write updated data back to file
-        file_put_contents($file, implode(',', $dataArray));
-
-        // release lock
-        flock($fp, LOCK_UN);
-        fclose($fp);
-    }
-    //refresh the page to relod
+    //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 
 //whatever is the input change the database accordingly for the security
 if (isset($_POST['security'])) {
-    if ($_POST['sec'] == 'low') {
-        // acquire lock
-        $fp = fopen($file, 'r+');
-        flock($fp, LOCK_EX);
+    $selectedSec = $_POST['sec'];
 
-        $dataArray[4] = 'low';
+    // Update the database with the selected security option
+    $new_value = mysqli_real_escape_string($conn, $selectedSec);
+    $new_sql = "UPDATE device SET securityS = '$new_value'";
+    mysqli_query($conn, $new_sql);
 
-        // write updated data back to file
-        file_put_contents($file, implode(',', $dataArray));
-
-        // release lock
-        flock($fp, LOCK_UN);
-        fclose($fp);
-    } else if ($_POST['sec'] == 'off') {
-        // acquire lock
-        $fp = fopen($file, 'r+');
-        flock($fp, LOCK_EX);
-
-        $dataArray[4] = 'off';
-
-        // write updated data back to file
-        file_put_contents($file, implode(',', $dataArray));
-
-        // release lock
-        flock($fp, LOCK_UN);
-        fclose($fp);
-    } else if ($_POST['sec'] == 'high') {
-        // acquire lock
-        $fp = fopen($file, 'r+');
-        flock($fp, LOCK_EX);
-
-        $dataArray[4] = 'high';
-
-        // write updated data back to file
-        file_put_contents($file, implode(',', $dataArray));
-
-        // release lock
-        flock($fp, LOCK_UN);
-        fclose($fp);
-    }
-    //refresh the page to relod 
-    header('Location: ./customer.php');
-}
-
-//control air conditioner, later will be implemented
-if (isset($_POST['air'])) {
-
-    // acquire lock
-    $fp = fopen($file, 'r+');
-    flock($fp, LOCK_EX);
-
-    $dataArray[2] = $_POST['temp'];
-
-    // write updated data back to file
-    file_put_contents($file, implode(',', $dataArray));
-
-    // release lock
-    flock($fp, LOCK_UN);
-    fclose($fp);
+    //refresh the page to relod the database
     header('Location: ./customer.php');
 }
 ?>

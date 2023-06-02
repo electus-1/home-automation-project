@@ -12,6 +12,7 @@ window.addEventListener("load", function () {
   }
 });
 
+/*
 //reload the page every 5 second to refresh the data
 var intervalTime = 5000;
 function refreshPage() {
@@ -20,3 +21,4 @@ function refreshPage() {
 
 // Set the interval to execute the function
 setInterval(refreshPage, intervalTime);
+*/

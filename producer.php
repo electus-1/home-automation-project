@@ -1,22 +1,30 @@
 <?php
+//connects to the sql database
+$conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
-$file = 'mockData.txt';
+//write query for all infos
+$sql = 'SELECT light, lightColor, tempature, sound, securityS, door, roomba, waterHeater FROM device';
 
-//get the data from the specified file
-$fullData = file_get_contents($file);
-$dataArray = explode(',', $fullData);
+//make query and get result
+$result = mysqli_query($conn, $sql);
+
+//fetch the resulting rows as an array
+$infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+//frees result from memory for good practice
+mysqli_free_result($result);
 
 
-//mock data values
-$light = $dataArray[0];
-$color = $dataArray[1];
-$tempature = $dataArray[2];
-$sound = $dataArray[3];
-$securityS = $dataArray[4];
-$door = $dataArray[5];
-$roomba = $dataArray[6];
-$waterHeater = $dataArray[7];
-
+print_r($infos); //prints the array taken from the database
+//all the infos from the database, selected from $infos array
+$light = $infos[0]['light'];
+$color = $infos[0]['lightColor'];
+$tempature = $infos[0]['tempature'];
+$sound = $infos[0]['sound'];
+$securityS = $infos[0]['securityS'];
+$door = $infos[0]['door'];
+$roomba = $infos[0]['roomba'];
+$waterHeater = $infos[0]['waterHeater'];
 
 ?>
 
