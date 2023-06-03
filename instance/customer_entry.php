@@ -26,6 +26,20 @@ $emptyroom = $infos[0]['emptyroom'];
 echo ($email);
 print_r($infos);
 
+if (isset($_POST['delete'])) {
+    $value = $_POST['delete'];
+    $sqlcode = "UPDATE userInfo SET {$value} = 0 WHERE email = '{$email}'";
+    echo ($sqlcode);
+
+    if (mysqli_query($conn, $sqlcode)) {
+        //success
+    } else {
+        echo 'query error: ' . mysqli_error($conn);
+    }
+
+    header("Location: ./customer_entry.php?variable={$email}");
+}
+
 ?>
 
 <!DOCTYPE php>
@@ -46,14 +60,24 @@ print_r($infos);
         <h1>Customer Dashboard</h1>
         <a href="../index.html">Logout</a>
     </div>
+
+
+
     <div class="cards">
         <?php
         if ($livingroom != 0) {
             for ($i = 0; $i < $livingroom; $i++) {
                 echo (" <a href='./customer_room.php?variable2=livingroom&variable={$email}'> <div class='card living-room'>
                 <p class='title'>Living Room</p>
-                </a>
-            </div>");
+        <img src='../img/display/livingroom.png' alt=''>
+
+        <form action='' method='post'>
+        <button name='delete' value='livingroom'>delete</button>
+    </form>
+            </div>
+            
+            </a>
+            ");
             }
         }
 
@@ -61,6 +85,12 @@ print_r($infos);
             for ($i = 0; $i < $kitchen; $i++) {
                 echo (" <a href='./customer_room.php?variable2=kitchen&variable={$email}'><div class='card kitchen'>
                 <p class='title'>Kitchen</p>
+        <img src='../img/display/kitchen.png' alt=''>
+
+        <form action='' method='post'>
+        <button name='delete' value='kitchen'>delete</button>
+    </form>
+
             </div></a>");
             }
         }
@@ -69,6 +99,12 @@ print_r($infos);
             for ($i = 0; $i < $bathroom; $i++) {
                 echo (" <a href='./customer_room.php?variable2=bathroom&variable={$email}'><div class='card bathroom'>
                 <p class='title'>Bathroom</p>
+        <img src='../img/display/bathroom.png' alt=''>
+
+        <form action='' method='post'>
+        <button name='delete' value='bathroom'>delete</button>
+    </form>
+
             </div></a>");
             }
         }
@@ -77,6 +113,12 @@ print_r($infos);
             for ($i = 0; $i < $hallway; $i++) {
                 echo ("  <a href='./customer_room.php?variable2=hallway&variable={$email}'><div class='card hallway'>
                 <p class='title'>Hallway</p>
+        <img src='../img/display/hallway.png' alt=''>
+
+        <form action='' method='post'>
+        <button name='delete' value='hallway'>delete</button>
+    </form>
+
             </div></a>");
             }
         }
@@ -85,6 +127,12 @@ print_r($infos);
             for ($i = 0; $i < $bedroom; $i++) {
                 echo (" <a href='./customer_room.php?variable2=bedroom&variable={$email}'> <div class='card bedroom'>
                 <p class='title'>Bedroom</p>
+        <img src='../img/display/bedroom.png' alt=''>
+
+        <form action='' method='post'>
+        <button name='delete' value='bedroom'>delete</button>
+    </form>
+
             </div></a>");
             }
         }
@@ -93,6 +141,12 @@ print_r($infos);
             for ($i = 0; $i < $emptyroom; $i++) {
                 echo (" <a href='./customer_room.php?variable2=emptyroom&variable={$email}'> <div class='card emptyroom'>
                 <p class='title'>Empty Room</p>
+        <img src='../img/display/emptyroom.png' alt=''>
+
+        <form action='' method='post'>
+        <button name='delete' value='emptyroom'>delete</button>
+    </form>
+                
             </div></a>");
             }
         }
@@ -104,7 +158,11 @@ print_r($infos);
         <?php
         echo ("<div class='card emptyroom'>
         <a href='./add_room.php?variable={$email}'>
-            <p class='title'>Add</p>
+            <p class='title'>Add/Remove</p>
+        <img src='../img/display/plus.png' alt=''>
+
+        
+
         </a>
     </div>");
         ?>

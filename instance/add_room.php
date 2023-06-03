@@ -38,16 +38,18 @@ if (isset($_POST['addRoom'])) {
     }
 
     $room = '';
+    $vals = '';
 
     for ($i = 0; $i < count($checkboxes); $i++) {
-        $room .= "$checkboxes[$i] = 0, ";
+        $room .= "$checkboxes[$i], ";
+        $vals .= "0,";
     }
 
     $room = rtrim($room, ", ");
     echo ($room);
 
 
-    $addDevice = "UPDATE {$chosenRoom} SET {$room}  WHERE email = '{$email}'";
+    $addDevice = "INSERT INTO {$chosenRoom} ({$room}, email) VALUES({$vals} '{$email}')";
 
     echo ($addDevice);
 

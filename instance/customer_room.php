@@ -46,8 +46,6 @@ $waterHeater = $infos[$last]['waterHeater'];
 $tempature = $infos[$last]['tempature'];
 
 
-
-
 /*For all the if statements below, if a certain button is pressed then update the database */
 
 // If the button is clicked, update the database
@@ -401,6 +399,8 @@ if (isset($_POST['air'])) {
 
                         ?>
                     </button>
+
+
                 </form>
             </div> <?php }
 
@@ -431,6 +431,8 @@ if (isset($_POST['air'])) {
                         <option value="blue">BLUE</option>
                     </select>
                     <button type="submit" name="change-color">APPLY CHANGES</button>
+
+
                 </form>
             </div>
         <?php
@@ -453,6 +455,7 @@ if (isset($_POST['air'])) {
                         <input type="number" required name="temp" min="8" max="38" value="8" step=".01">
                     </div>
                     <button type="submit" name="air">START AIR CONDITIONER</button>
+
                 </form>
             </div>
         <?php
@@ -605,14 +608,14 @@ if (isset($_POST['air'])) {
         ?>
             <div class="card heater">
                 <p class="title">WATER HEATER</p>
-                <p class="state">
+                <p class="state fix2">
                     <?php
                     if ($waterHeater == 0) {
                         echo '<img src="../img/display/heating-off.png" width="50px" height="50px" img/> </br>';
 
                         echo 'OFF';
                     } else {
-                        echo '<img src="../img/display/heating-on.png" width="50px" height="50px" img/> </br>';
+                        echo '    <img class="fix" src="../img/display/heating-on.png" width="50px" height="50px" img/> </br>';
 
                         echo 'HEATING WATER';
                     }

@@ -54,6 +54,8 @@ print_r($infos);
             for ($i = 0; $i < $livingroom; $i++) {
                 echo (" <a href='./producer_cus_room.php?variable2=livingroom&variable={$email}'> <div class='card living-room'>
                 <p class='title'>Living Room</p>
+        <img src='../img/display/livingroom.png' alt=''>
+
                 </a>
             </div>");
             }
@@ -63,6 +65,8 @@ print_r($infos);
             for ($i = 0; $i < $kitchen; $i++) {
                 echo (" <a href='./producer_cus_room.php?variable2=kitchen&variable={$email}'><div class='card kitchen'>
                 <p class='title'>Kitchen</p>
+        <img src='../img/display/kitchen.png' alt=''>
+
             </div></a>");
             }
         }
@@ -71,6 +75,8 @@ print_r($infos);
             for ($i = 0; $i < $bathroom; $i++) {
                 echo (" <a href='./producer_cus_room.php?variable2=bathroom&variable={$email}'><div class='card bathroom'>
                 <p class='title'>Bathroom</p>
+        <img src='../img/display/bathroom.png' alt=''>
+
             </div></a>");
             }
         }
@@ -79,6 +85,8 @@ print_r($infos);
             for ($i = 0; $i < $hallway; $i++) {
                 echo ("  <a href='./producer_cus_room.php?variable2=hallway&variable={$email}'><div class='card hallway'>
                 <p class='title'>Hallway</p>
+        <img src='../img/display/hallway.png' alt=''>
+
             </div></a>");
             }
         }
@@ -87,6 +95,8 @@ print_r($infos);
             for ($i = 0; $i < $bedroom; $i++) {
                 echo (" <a href='./producer_cus_room.php?variable2=bedroom&variable={$email}'> <div class='card bedroom'>
                 <p class='title'>Bedroom</p>
+        <img src='../img/display/bedroom.png' alt=''>
+
             </div></a>");
             }
         }
@@ -95,6 +105,8 @@ print_r($infos);
             for ($i = 0; $i < $emptyroom; $i++) {
                 echo (" <a href='./producer_cus_room.php?variable2=emptyroom&variable={$email}'> <div class='card emptyroom'>
                 <p class='title'>Empty Room</p>
+        <img src='../img/display/emptyroom.png' alt=''>
+
             </div></a>");
             }
         }
