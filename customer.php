@@ -16,6 +16,7 @@ $infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
 mysqli_free_result($result);
 
 //print_r($infos);
+//if they are not null they will be shown in the page
 $last = count($infos) - 1;
 $light = $infos[$last]['light'];
 $color = $infos[$last]['lightColor'];

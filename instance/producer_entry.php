@@ -10,6 +10,8 @@ $result = mysqli_query($conn, $sql);
 //fetch the resulting rows as an array
 $infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+
+
 //frees result from memory for good practice
 mysqli_free_result($result);
 
@@ -34,6 +36,7 @@ print_r($infos);
         <h1>Producer Dashboard</h1>
         <a href="../index.html">Logout</a>
 
+
     </div>
 
     <div class="table">
@@ -50,7 +53,7 @@ print_r($infos);
                     echo (" <tr>
                 <td>{$infos[$i]['email']}</td>
                 <td>{$infos[$i]['pw']}</td>
-                <td><a href='../producer.php'> <button type='submit'>Select</button> </a></td>
+                <td><a href='./producer_rooms.php?variable={$infos[$i]['email']}'> <button type='submit'>Select</button> </a></td>
             </tr> ");
                 }
             }

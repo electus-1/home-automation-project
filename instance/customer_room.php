@@ -8,6 +8,21 @@ $conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 //write query for all infos
 $sql = "SELECT * FROM {$room}";
 
+$columnNames = "SELECT *
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = N'{$room}'";
+
+$result2 = mysqli_query($conn, $columnNames);
+$infos2 = mysqli_fetch_all($result2, MYSQLI_ASSOC);
+
+$columns[] = '';
+
+for ($i = 0; $i < count($infos2); $i++) {
+    $columns[$i] = $infos2[$i]['COLUMN_NAME'];
+}
+//print_r($columns);
+//print_r($infos2);
+
 //make query and get result
 $result = mysqli_query($conn, $sql);
 
@@ -16,11 +31,13 @@ $infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 //frees result from memory for good practice
 mysqli_free_result($result);
+mysqli_free_result($result2);
 
 print_r($infos);
 $last = count($infos) - 1;
 $light = $infos[$last]['light'];
 $color = $infos[$last]['lightColor'];
+$lightColor = $infos[$last]['lightColor'];
 $sound = $infos[$last]['sound'];
 $door = $infos[$last]['door'];
 $securityS = $infos[$last]['securityS'];
@@ -41,7 +58,21 @@ if (isset($_POST['light'])) {
     ($light == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "INSERT INTO device VALUES ({$new_value}, '{$color}', {$tempature}, {$sound}, '{$securityS}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
+    $finalValue = "";
+
+    for ($i = 0; $i < count($columns); $i++) {
+        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+            $finalValue .= ", '" .  ${$columns[$i]} . "'";
+        } else if ($columns[$i] == 'light') {
+            $finalValue .= ", " . $new_value;
+        } else {
+            $finalValue .= ", " . ${$columns[$i]};
+        }
+    }
+
+    $finalValue = substr($finalValue, 1);
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
     //$new_sql = "UPDATE device SET light = '$new_value'";
     if (mysqli_query($conn, $new_sql)) {
         //success
@@ -50,7 +81,7 @@ if (isset($_POST['light'])) {
     }
 
     //refresh the page to relod the database
-    header('Location: ./customer.php');
+    header("Location: ./customer_room.php?variable2={$room}&variable={$email}");
 }
 
 if (isset($_POST['sound'])) {
@@ -58,8 +89,22 @@ if (isset($_POST['sound'])) {
     ($sound == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$new_value}, '{$securityS}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
 
+    $finalValue = "";
+
+    for ($i = 0; $i < count($columns); $i++) {
+        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+            $finalValue .= ", '" .  ${$columns[$i]} . "'";
+        } else if ($columns[$i] == 'sound') {
+            $finalValue .= ", " .  $new_value;
+        } else {
+            $finalValue .= ", " . ${$columns[$i]};
+        }
+    }
+
+    $finalValue = substr($finalValue, 1);
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
     if (mysqli_query($conn, $new_sql)) {
         //success
     } else {
@@ -67,7 +112,7 @@ if (isset($_POST['sound'])) {
     }
 
     //refresh the page to relod the database
-    header('Location: ./customer.php');
+    header("Location: ./customer_room.php?variable2={$room}&variable={$email}");
 }
 
 
@@ -77,7 +122,24 @@ if (isset($_POST['lock'])) {
     ($door == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$sound}, '{$securityS}', {$new_value}, {$roomba}, {$waterHeater}, '{$email}')";
+
+
+    $finalValue = "";
+
+    for ($i = 0; $i < count($columns); $i++) {
+        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+            $finalValue .= ", '" .  ${$columns[$i]} . "'";
+        } else if ($columns[$i] == 'door') {
+            $finalValue .= ", " .  $new_value;
+        } else {
+            $finalValue .= ", " . ${$columns[$i]};
+        }
+    }
+
+    $finalValue = substr($finalValue, 1);
+
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
 
     if (mysqli_query($conn, $new_sql)) {
         //success
@@ -86,7 +148,7 @@ if (isset($_POST['lock'])) {
     }
 
     //refresh the page to relod the database
-    header('Location: ./customer.php');
+    header("Location: ./customer_room.php?variable2={$room}&variable={$email}");
 }
 
 if (isset($_POST['roomba'])) {
@@ -94,7 +156,22 @@ if (isset($_POST['roomba'])) {
     ($roomba == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$sound}, '{$securityS}', {$door}, {$new_value}, {$waterHeater}, '{$email}')";
+
+    $finalValue = "";
+
+    for ($i = 0; $i < count($columns); $i++) {
+        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+            $finalValue .= ", '" .  ${$columns[$i]} . "'";
+        } else if ($columns[$i] == 'roomba') {
+            $finalValue .= ", " .  $new_value;
+        } else {
+            $finalValue .= ", " . ${$columns[$i]};
+        }
+    }
+
+    $finalValue = substr($finalValue, 1);
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
 
     if (mysqli_query($conn, $new_sql)) {
         //success
@@ -103,7 +180,7 @@ if (isset($_POST['roomba'])) {
     }
 
     //refresh the page to relod the database
-    header('Location: ./customer.php');
+    header("Location: ./customer_room.php?variable2={$room}&variable={$email}");
 }
 
 if (isset($_POST['heater'])) {
@@ -111,7 +188,22 @@ if (isset($_POST['heater'])) {
     ($waterHeater == 1) ? $val = 0 : $val = 1;
 
     $new_value = mysqli_real_escape_string($conn, $val);
-    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$sound}, '{$securityS}', {$door}, {$roomba}, {$new_value}, '{$email}')";
+
+    $finalValue = "";
+
+    for ($i = 0; $i < count($columns); $i++) {
+        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+            $finalValue .= ", '" .  ${$columns[$i]} . "'";
+        } else if ($columns[$i] == 'waterHeater') {
+            $finalValue .= ", " .  $new_value;
+        } else {
+            $finalValue .= ", " . ${$columns[$i]};
+        }
+    }
+
+    $finalValue = substr($finalValue, 1);
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
 
     if (mysqli_query($conn, $new_sql)) {
         //success
@@ -120,7 +212,7 @@ if (isset($_POST['heater'])) {
     }
 
     //refresh the page to relod the database
-    header('Location: ./customer.php');
+    header("Location: ./customer_room.php?variable2={$room}&variable={$email}");
 }
 
 //whatever is the input change the database accordingly for the color 
@@ -129,14 +221,30 @@ if (isset($_POST['change-color'])) {
 
     // Update the database with the selected color
     $new_value = mysqli_real_escape_string($conn, $selectedColor);
-    $new_sql = "INSERT INTO device VALUES ({$light}, '{$new_value}', {$tempature}, {$sound}, '{$securityS}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
+
+
+    $finalValue = "";
+
+    for ($i = 0; $i < count($columns); $i++) {
+        if ($columns[$i] == 'securityS' || $columns[$i] == 'email') {
+            $finalValue .= ", '" .  ${$columns[$i]} . "'";
+        } else if ($columns[$i] == 'lightColor') {
+            $finalValue .= ", '" .  $new_value . "'";
+        } else {
+            $finalValue .= ", " . ${$columns[$i]};
+        }
+    }
+
+    $finalValue = substr($finalValue, 1);
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
 
     mysqli_query($conn, $new_sql);
 
     echo ('Button pushed');
 
     //refresh the page to relod the database
-    header('Location: ./customer.php');
+    header("Location: ./customer_room.php?variable2={$room}&variable={$email}");
 }
 
 //whatever is the input change the database accordingly for the security
@@ -145,12 +253,27 @@ if (isset($_POST['security'])) {
 
     // Update the database with the selected security option
     $new_value = mysqli_real_escape_string($conn, $selectedSec);
-    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$tempature}, {$sound}, '{$new_value}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
+
+    $finalValue = "";
+
+    for ($i = 0; $i < count($columns); $i++) {
+        if ($columns[$i] == 'lightColor' || $columns[$i] == 'email') {
+            $finalValue .= ", '" .  ${$columns[$i]} . "'";
+        } else if ($columns[$i] == 'securityS') {
+            $finalValue .= ", '" .  $new_value . "'";
+        } else {
+            $finalValue .= ", " . ${$columns[$i]};
+        }
+    }
+
+    $finalValue = substr($finalValue, 1);
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
 
     mysqli_query($conn, $new_sql);
 
     //refresh the page to relod the database
-    header('Location: ./customer.php');
+    header("Location: ./customer_room.php?variable2={$room}&variable={$email}");
 }
 
 if (isset($_POST['air'])) {
@@ -158,12 +281,26 @@ if (isset($_POST['air'])) {
 
     // Update the database with the entered value
     $new_value = mysqli_real_escape_string($conn, $selectedDeg);
-    $new_sql = "INSERT INTO device VALUES ({$light}, '{$color}', {$new_value}, {$sound}, '{$securityS}', {$door}, {$roomba}, {$waterHeater}, '{$email}')";
 
+    $finalValue = "";
+
+    for ($i = 0; $i < count($columns); $i++) {
+        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+            $finalValue .= ", '" .  ${$columns[$i]} . "'";
+        } else if ($columns[$i] == 'tempature') {
+            $finalValue .= ", " .  $new_value;
+        } else {
+            $finalValue .= ", " . ${$columns[$i]};
+        }
+    }
+
+    $finalValue = substr($finalValue, 1);
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
     mysqli_query($conn, $new_sql);
 
     //refresh the page to relod the database
-    header('Location: ./customer.php');
+    header("Location: ./customer_room.php?variable2={$room}&variable={$email}");
 }
 ?>
 
