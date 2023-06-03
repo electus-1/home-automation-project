@@ -101,11 +101,13 @@ print_r($infos);
 
         ?>
 
-        <div class="card emptyroom">
-            <a href="./add_room.php">
-                <p class="title">Add</p>
-            </a>
-        </div>
+        <?php
+        echo ("<div class='card emptyroom'>
+        <a href='./add_room.php?variable={$email}'>
+            <p class='title'>Add</p>
+        </a>
+    </div>");
+        ?>
 
 
 

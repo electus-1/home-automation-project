@@ -6,7 +6,7 @@ echo ($email . " and " . $room);
 $conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
 //write query for all infos
-$sql = "SELECT * FROM {$room}";
+$sql = "SELECT * FROM {$room} WHERE email = '{$email}'";
 
 $columnNames = "SELECT *
 FROM INFORMATION_SCHEMA.COLUMNS
@@ -61,16 +61,24 @@ if (isset($_POST['light'])) {
     $finalValue = "";
 
     for ($i = 0; $i < count($columns); $i++) {
-        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
-            $finalValue .= ", '" .  ${$columns[$i]} . "'";
-        } else if ($columns[$i] == 'light') {
-            $finalValue .= ", " . $new_value;
+
+        if (${$columns[$i]} !== null) {
+
+            if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+                $finalValue .= ", '" .  ${$columns[$i]} . "' ";
+            } else if ($columns[$i] == 'light') {
+                $finalValue .= ", " . $new_value;
+            } else {
+                $finalValue .= ", " . ${$columns[$i]};
+            }
         } else {
-            $finalValue .= ", " . ${$columns[$i]};
+            $finalValue .= ", null";
         }
     }
 
     $finalValue = substr($finalValue, 1);
+
+
 
     $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
     //$new_sql = "UPDATE device SET light = '$new_value'";
@@ -93,12 +101,18 @@ if (isset($_POST['sound'])) {
     $finalValue = "";
 
     for ($i = 0; $i < count($columns); $i++) {
-        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
-            $finalValue .= ", '" .  ${$columns[$i]} . "'";
-        } else if ($columns[$i] == 'sound') {
-            $finalValue .= ", " .  $new_value;
+
+        if (${$columns[$i]} !== null) {
+
+            if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+                $finalValue .= ", '" .  ${$columns[$i]} . "'";
+            } else if ($columns[$i] == 'sound') {
+                $finalValue .= ", " .  $new_value;
+            } else {
+                $finalValue .= ", " . ${$columns[$i]};
+            }
         } else {
-            $finalValue .= ", " . ${$columns[$i]};
+            $finalValue .= ", null";
         }
     }
 
@@ -127,12 +141,17 @@ if (isset($_POST['lock'])) {
     $finalValue = "";
 
     for ($i = 0; $i < count($columns); $i++) {
-        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
-            $finalValue .= ", '" .  ${$columns[$i]} . "'";
-        } else if ($columns[$i] == 'door') {
-            $finalValue .= ", " .  $new_value;
+
+        if (${$columns[$i]} !== null) {
+            if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+                $finalValue .= ", '" .  ${$columns[$i]} . "'";
+            } else if ($columns[$i] == 'door') {
+                $finalValue .= ", " .  $new_value;
+            } else {
+                $finalValue .= ", " . ${$columns[$i]};
+            }
         } else {
-            $finalValue .= ", " . ${$columns[$i]};
+            $finalValue .= ", null";
         }
     }
 
@@ -160,12 +179,17 @@ if (isset($_POST['roomba'])) {
     $finalValue = "";
 
     for ($i = 0; $i < count($columns); $i++) {
-        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
-            $finalValue .= ", '" .  ${$columns[$i]} . "'";
-        } else if ($columns[$i] == 'roomba') {
-            $finalValue .= ", " .  $new_value;
+
+        if (${$columns[$i]} !== null) {
+            if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+                $finalValue .= ", '" .  ${$columns[$i]} . "'";
+            } else if ($columns[$i] == 'roomba') {
+                $finalValue .= ", " .  $new_value;
+            } else {
+                $finalValue .= ", " . ${$columns[$i]};
+            }
         } else {
-            $finalValue .= ", " . ${$columns[$i]};
+            $finalValue .= ", null";
         }
     }
 
@@ -192,12 +216,17 @@ if (isset($_POST['heater'])) {
     $finalValue = "";
 
     for ($i = 0; $i < count($columns); $i++) {
-        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
-            $finalValue .= ", '" .  ${$columns[$i]} . "'";
-        } else if ($columns[$i] == 'waterHeater') {
-            $finalValue .= ", " .  $new_value;
+
+        if (${$columns[$i]} !== null) {
+            if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+                $finalValue .= ", '" .  ${$columns[$i]} . "'";
+            } else if ($columns[$i] == 'waterHeater') {
+                $finalValue .= ", " .  $new_value;
+            } else {
+                $finalValue .= ", " . ${$columns[$i]};
+            }
         } else {
-            $finalValue .= ", " . ${$columns[$i]};
+            $finalValue .= ", null";
         }
     }
 
@@ -226,12 +255,16 @@ if (isset($_POST['change-color'])) {
     $finalValue = "";
 
     for ($i = 0; $i < count($columns); $i++) {
-        if ($columns[$i] == 'securityS' || $columns[$i] == 'email') {
-            $finalValue .= ", '" .  ${$columns[$i]} . "'";
-        } else if ($columns[$i] == 'lightColor') {
-            $finalValue .= ", '" .  $new_value . "'";
+        if (${$columns[$i]} !== null) {
+            if ($columns[$i] == 'securityS' || $columns[$i] == 'email') {
+                $finalValue .= ", '" .  ${$columns[$i]} . "'";
+            } else if ($columns[$i] == 'lightColor') {
+                $finalValue .= ", '" .  $new_value . "'";
+            } else {
+                $finalValue .= ", " . ${$columns[$i]};
+            }
         } else {
-            $finalValue .= ", " . ${$columns[$i]};
+            $finalValue .= ", null";
         }
     }
 
@@ -257,12 +290,16 @@ if (isset($_POST['security'])) {
     $finalValue = "";
 
     for ($i = 0; $i < count($columns); $i++) {
-        if ($columns[$i] == 'lightColor' || $columns[$i] == 'email') {
-            $finalValue .= ", '" .  ${$columns[$i]} . "'";
-        } else if ($columns[$i] == 'securityS') {
-            $finalValue .= ", '" .  $new_value . "'";
+        if (${$columns[$i]} !== null) {
+            if ($columns[$i] == 'lightColor' || $columns[$i] == 'email') {
+                $finalValue .= ", '" .  ${$columns[$i]} . "'";
+            } else if ($columns[$i] == 'securityS') {
+                $finalValue .= ", '" .  $new_value . "'";
+            } else {
+                $finalValue .= ", " . ${$columns[$i]};
+            }
         } else {
-            $finalValue .= ", " . ${$columns[$i]};
+            $finalValue .= ", null";
         }
     }
 
@@ -285,12 +322,16 @@ if (isset($_POST['air'])) {
     $finalValue = "";
 
     for ($i = 0; $i < count($columns); $i++) {
-        if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
-            $finalValue .= ", '" .  ${$columns[$i]} . "'";
-        } else if ($columns[$i] == 'tempature') {
-            $finalValue .= ", " .  $new_value;
+        if (${$columns[$i]} !== null) {
+            if ($columns[$i] == 'lightColor' || $columns[$i] == 'securityS' || $columns[$i] == 'email') {
+                $finalValue .= ", '" .  ${$columns[$i]} . "'";
+            } else if ($columns[$i] == 'tempature') {
+                $finalValue .= ", " .  $new_value;
+            } else {
+                $finalValue .= ", " . ${$columns[$i]};
+            }
         } else {
-            $finalValue .= ", " . ${$columns[$i]};
+            $finalValue .= ", null";
         }
     }
 
