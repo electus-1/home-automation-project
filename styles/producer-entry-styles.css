@@ -127,3 +127,8 @@ button:active {
 a {
   color: #f5f5f5;
 }
+
+.header > .header-logout {
+  display: flex;
+  justify-content: space-between;
+}

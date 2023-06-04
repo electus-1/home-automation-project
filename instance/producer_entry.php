@@ -15,7 +15,7 @@ $infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
 //frees result from memory for good practice
 mysqli_free_result($result);
 
-print_r($infos);
+//print_r($infos);
 ?>
 
 

@@ -2,7 +2,7 @@
 $email = $_GET['variable'];
 $room = $_GET['variable2'];
 
-echo ($email . " and " . $room);
+//echo ($email . " and " . $room);
 $conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
 //write query for all infos
@@ -17,7 +17,7 @@ $infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 //frees result from memory for good practice
 mysqli_free_result($result);
-print_r($infos);
+//print_r($infos);
 $last = count($infos) - 1;
 $light = $infos[$last]['light'];
 $color = $infos[$last]['lightColor'];
@@ -47,10 +47,13 @@ $tempature = $infos[$last]['tempature'];
 <body>
     <div class="header">
         <h1><?php echo ($room); ?></h1>
-        <a href="../index.html">Logout</a>
+
         <?php
         //goes back and passes the email
-        echo ("<a href='./producer_rooms.php?variable={$email}'>Back</a>"); ?>
+        echo ("<a href='./table_device.php?variable={$email}&variable2={$room}'>Device Info</a>");
+        echo ("<a href='./customer_entry.php?variable={$email}'>Back</a>");
+        ?>
+        <a href="../index.html">Logout</a>
 
     </div>
 

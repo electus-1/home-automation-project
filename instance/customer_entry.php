@@ -23,8 +23,8 @@ $emptyroom = $infos[0]['emptyroom'];
 
 //get the email from the login.php file to know specific user's infos
 
-echo ($email);
-print_r($infos);
+//echo ($email);
+//print_r($infos);
 
 if (isset($_POST['delete'])) {
     $value = $_POST['delete'];

@@ -46,12 +46,12 @@ if (isset($_POST['addRoom'])) {
     }
 
     $room = rtrim($room, ", ");
-    echo ($room);
+    //echo ($room);
 
 
     $addDevice = "INSERT INTO {$chosenRoom} ({$room}, email) VALUES({$vals} '{$email}')";
 
-    echo ($addDevice);
+    //echo ($addDevice);
 
     if (mysqli_query($conn, $addDevice)) {
         //success
