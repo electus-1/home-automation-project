@@ -50,7 +50,7 @@ $tempature = $infos[$last]['tempature'];
 
         <?php
         //goes back and passes the email
-        echo ("<a href='./table_device.php?variable={$email}&variable2={$room}'>Device Info</a>");
+        echo ("<a href='./table_device_prod.php?variable={$email}&variable2={$room}'>Device Info</a>");
         echo ("<a href='./customer_entry.php?variable={$email}'>Back</a>");
         ?>
         <a href="../index.html">Logout</a>
