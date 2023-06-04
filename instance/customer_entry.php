@@ -158,7 +158,7 @@ if (isset($_POST['delete'])) {
         <?php
         echo ("<div class='card emptyroom'>
         <a href='./add_room.php?variable={$email}'>
-            <p class='title'>Add/Remove</p>
+            <p class='title'>Add/Edit</p>
         <img src='../img/display/plus.png' alt=''>
 
         

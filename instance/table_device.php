@@ -59,6 +59,7 @@ mysqli_free_result($result);
     <div class="table">
         <table>
             <tr>
+                <th>Number</th>
                 <th>Light System</th>
                 <th>Light Color</th>
                 <th>Temperature (℃)</th>
@@ -74,6 +75,9 @@ mysqli_free_result($result);
                 if ($infos[$i]['isAdmin'] == 0) {
 
                     echo ("<tr>");
+
+                    $no = $i + 1;
+                    echo ("<td>{$no}</td>");
 
                     if ($infos[$i]['light'] == null) {
                         echo ("<td>No device found</td>");
