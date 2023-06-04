@@ -75,20 +75,19 @@ if (isset($_POST['addRoom'])) {
 </head>
 
 <body>
-    <div class="header">
+    <div class="header add-room-header">
         <h1>Add a room</h1>
-        <a href="../index.html">Logout</a>
+        
         <?php
         echo ("<a href='./customer_entry.php?variable={$email}'>Back</a>"); ?>
 
-
+<a href="../index.html">Logout</a>
 
     </div>
 
     <div class="room-form">
         <form action="" method="post">
-
-            <label for="room-type">Room type</label>
+    <div id="room-selection"><label for="room-type">Room type: </label>
             <select name="room-type" id="room-type">
                 <option value="kitchen" selected>Kitchen</option>
                 <option value="livingroom">Living Room</option>
@@ -97,34 +96,50 @@ if (isset($_POST['addRoom'])) {
                 <option value="bedroom">Bedroom</option>
                 <option value="emptyroom">Empty Room</option>
             </select>
-
+</div>
+           
             <br>
 
-            <label for="devices">Choose Devices: </label>
             <div id="devices">
+
+            <label for="devices">Choose Devices: </label>
+            <br>
+                <div>
                 <label for="light">Light Sensor</label>
                 <input type="checkbox" value="light" name="box[]" id="light">
+                </div>
                 <br>
-                <label for="lightColor">Light Color Sensor</label>
-                <input type="checkbox" value="lightColor" name="box[]" id="lightColor">
+                <div>  <label for="lightColor">Light Color Sensor</label>
+                <input type="checkbox" value="lightColor" name="box[]" id="lightColor"></div>
                 <br>
+                <div>
                 <label for="tempature">Temperature Capturer</label>
                 <input type="checkbox" value="tempature" name="box[]" id="tempature">
+                </div>
                 <br>
-                <label for="sound">Sound System</label>
-                <input type="checkbox" value="sound" name="box[]" id="sound">
+                <div><label for="sound">Sound System</label>
+                <input type="checkbox" value="sound" name="box[]" id="sound"></div>
                 <br>
+                <div>
                 <label for="securityS">Security System </label>
                 <input type="checkbox" value="securityS" name="box[]" id="securityS">
+                </div>
                 <br>
+                <div>
                 <label for="door">Door Locking Mechanism </label>
                 <input type="checkbox" value="door" name="box[]" id="door">
+                </div>
+                
                 <br>
+                <div>
                 <label for="roomba">Roomba Cleaner</label>
                 <input type="checkbox" value="roomba" name="box[]" id="roomba">
+                </div>
+              
                 <br>
-                <label for="waterHeater">Water Heating System</label>
-                <input type="checkbox" value="waterHeater" name="box[]" id="waterHeater">
+                <div>   <label for="waterHeater">Water Heating System</label>
+                <input type="checkbox" value="waterHeater" name="box[]" id="waterHeater"></div>
+             
                 <br>
             </div>
 

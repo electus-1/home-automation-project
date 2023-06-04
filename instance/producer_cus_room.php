@@ -46,12 +46,12 @@ $tempature = $infos[$last]['tempature'];
 
 <body>
     <div class="header">
-        <h1><?php echo ($room); ?></h1>
+        <h1><?php echo (ucfirst($room)); ?></h1>
 
         <?php
         //goes back and passes the email
         echo ("<a href='./table_device_prod.php?variable={$email}&variable2={$room}'>Device Info</a>");
-        echo ("<a href='./customer_entry.php?variable={$email}'>Back</a>");
+        echo ("<a href='./producer_rooms.php?variable={$email}'>Back</a>");
         ?>
         <a href="../index.html">Logout</a>
 

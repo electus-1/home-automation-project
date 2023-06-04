@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  
 }
 
 p {
@@ -75,7 +76,7 @@ img {
 }
 
 .title {
-  color: #FC2947;
+  color: #FD841F;
 }
 
 .state {
@@ -109,4 +110,71 @@ button:active {
 
 a {
   color: #f5f5f5;
+}
+
+button[name="delete"] {
+  background-color: #F15A59;
+  color: white;
+}
+
+table {
+  margin-top: 50px;
+  width: 80%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: black;
+  border-color: #1f2937;
+  color: white;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  
+  table caption {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+  
+  thead {
+    display: none;
+  }
+  
+  tr {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  td {
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+  
+  td:before {
+    color: #777;
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
 }

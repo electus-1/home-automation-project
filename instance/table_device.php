@@ -48,7 +48,7 @@ mysqli_free_result($result);
 
 <body>
     <div class="header">
-        <h1>Device <?php echo ("{$room}"); ?></h1>
+        <h1>Device <?php echo (ucfirst("{$room}")); ?></h1>
 
         <?php
         //goes back and passes the email

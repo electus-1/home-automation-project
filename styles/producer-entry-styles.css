@@ -92,11 +92,11 @@ th, td {
 }
 
 .title {
-  color: #FC2947;
+  color: #FD841F;
 }
 
 .state {
-  color: #7149C6;
+
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -131,4 +131,121 @@ a {
 .header > .header-logout {
   display: flex;
   justify-content: space-between;
+}
+
+div.room-form {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.room-form > form {
+  border: 2px solid #1f2937;
+  border-radius: 24px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  font-size: 20px;
+}
+
+#room-type {
+  font-size: 20px;
+}
+
+#room-selection {
+  display: flex;
+  gap: 20px;
+}
+
+button[name="addRoom"] {
+  width: 160px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 24px;
+}
+
+#devices {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.add-room-header {
+  margin-bottom: 100px;
+}
+
+table {
+  margin-top: 50px;
+  width: 80%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: black;
+  border-color: #1f2937;
+  color: white;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  
+  table caption {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+  }
+  
+  thead {
+    display: none;
+  }
+  
+  tr {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  td {
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+  
+  td:before {
+    color: #777;
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+}
+
+.gey {
+  background-color: #1f2937;
+  color: white;
 }

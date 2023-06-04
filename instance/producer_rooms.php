@@ -43,10 +43,9 @@ $emptyroom = $infos[0]['emptyroom'];
 
 <body>
     <div class="header">
-        <h1><?php echo ("{$email}'s Dashboard"); ?></h1>
-        <a href="../index.html">Logout</a>
+        <h1><?php echo  ("{$email}'s Dashboard"); ?></h1>
         <a href="./producer_entry.php">Back</a>
-
+        <a href="../index.html">Logout</a>
     </div>
     <div class="cards">
         <?php

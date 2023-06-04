@@ -358,7 +358,7 @@ if (isset($_POST['air'])) {
 
 <body>
     <div class="header">
-        <h1><?php echo ($room); ?></h1>
+        <h1><?php echo (ucfirst($room)); ?></h1>
 
         <?php
         //goes back and passes the email

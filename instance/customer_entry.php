@@ -72,7 +72,7 @@ if (isset($_POST['delete'])) {
         <img src='../img/display/livingroom.png' alt=''>
 
         <form action='' method='post'>
-        <button name='delete' value='livingroom'>delete</button>
+        <button name='delete' value='livingroom'>DELETE</button>
     </form>
             </div>
             
@@ -88,7 +88,7 @@ if (isset($_POST['delete'])) {
         <img src='../img/display/kitchen.png' alt=''>
 
         <form action='' method='post'>
-        <button name='delete' value='kitchen'>delete</button>
+        <button name='delete' value='kitchen'>DELETE</button>
     </form>
 
             </div></a>");
@@ -102,7 +102,7 @@ if (isset($_POST['delete'])) {
         <img src='../img/display/bathroom.png' alt=''>
 
         <form action='' method='post'>
-        <button name='delete' value='bathroom'>delete</button>
+        <button name='delete' value='bathroom'>DELETE</button>
     </form>
 
             </div></a>");
@@ -116,7 +116,7 @@ if (isset($_POST['delete'])) {
         <img src='../img/display/hallway.png' alt=''>
 
         <form action='' method='post'>
-        <button name='delete' value='hallway'>delete</button>
+        <button name='delete' value='hallway'>DELETE</button>
     </form>
 
             </div></a>");
@@ -130,7 +130,7 @@ if (isset($_POST['delete'])) {
         <img src='../img/display/bedroom.png' alt=''>
 
         <form action='' method='post'>
-        <button name='delete' value='bedroom'>delete</button>
+        <button name='delete' value='bedroom'>DELETE</button>
     </form>
 
             </div></a>");
@@ -144,7 +144,7 @@ if (isset($_POST['delete'])) {
         <img src='../img/display/emptyroom.png' alt=''>
 
         <form action='' method='post'>
-        <button name='delete' value='emptyroom'>delete</button>
+        <button name='delete' value='emptyroom'>DELETE</button>
     </form>
                 
             </div></a>");
@@ -160,16 +160,9 @@ if (isset($_POST['delete'])) {
         <a href='./add_room.php?variable={$email}'>
             <p class='title'>Add/Edit</p>
         <img src='../img/display/plus.png' alt=''>
-
-        
-
         </a>
     </div>");
         ?>
-
-
-
-
 
     </div>
 </body>
