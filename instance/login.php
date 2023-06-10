@@ -49,13 +49,13 @@ if (isset($_POST['login'])) {
             echo "Zort not an admin";
 
             //send email to the customer_entry.php
-            $url = './instance/customer_entry.php?variable=' . urlencode($email);
+            $url = './customer_entry.php?variable=' . urlencode($email);
             //redirect to the customer
             header("Location: {$url}");
         } else if (($email === $email  && $password === $pw && $isAdmin == 1)) {
             echo 'Zort admin';
             //redirect to producer
-            header("Location: ./instance/producer_entry.php");
+            header("Location: ./producer_entry.php");
         } else {
             echo "Wrong password";
         }
@@ -72,7 +72,7 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/producer-styles.css">
+    <link rel="stylesheet" href="../styles/producer-styles.css">
 
     <title>Wrong Password</title>
 </head>
@@ -80,7 +80,7 @@ if (isset($_POST['login'])) {
 <body>
     <div class="header">
         <h1>Wrong password, please try again later.</h1>
-        <button onclick="window.location.href = 'index.html'" class="home"> Home Page </button>
+        <button onclick="window.location.href = '../index.html'" class="home"> Home Page </button>
 
     </div>
     <div>a</div>
