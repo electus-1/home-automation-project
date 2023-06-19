@@ -1,4 +1,7 @@
 <?php
+$email = $_GET['variable'];
+
+
 $conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
 //write query for all infos
@@ -15,6 +18,14 @@ $infos = mysqli_fetch_all($result, MYSQLI_ASSOC);
 //frees result from memory for good practice
 mysqli_free_result($result);
 
+if ($email !== null) {
+    $sqldelete = "DELETE FROM pinfo WHERE email = '{$email}'";
+    if (mysqli_query($conn, $sqldelete)) {
+        //success
+    } else {
+        echo 'query error: ' . mysqli_error($conn);
+    }
+}
 //print_r($infos);
 ?>
 
@@ -39,12 +50,15 @@ mysqli_free_result($result);
 
     </div>
 
+
+
     <div class="table">
         <table>
             <tr>
                 <th>Email</th>
                 <th>Password</th>
                 <th>Select</th>
+                <th>Delete</th>
             </tr>
 
             <?php
@@ -53,7 +67,9 @@ mysqli_free_result($result);
                     echo (" <tr>
                 <td>{$infos[$i]['email']}</td>
                 <td>{$infos[$i]['pw']}</td>
-                <td><a href='./producer_rooms.php?variable={$infos[$i]['email']}'> <button class='gey' type='submit'>Select</button> </a></td>
+                <td><a href='./producer_rooms.php?variable={$infos[$i]['email']}'><button class='probttn' type='submit'>Select</button></a></td>
+                <td><a href='./producer_entry.php?variable={$infos[$i]['email']}'<form action='' 
+                method='post'><button type='submit' name='delete' class='probttn' type='submit'>Delete</button></form></a></td>
             </tr> ");
                 }
             }

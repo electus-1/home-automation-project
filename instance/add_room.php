@@ -42,8 +42,16 @@ if (isset($_POST['addRoom'])) {
 
     for ($i = 0; $i < count($checkboxes); $i++) {
         $room .= "$checkboxes[$i], ";
-        $vals .= "0,";
+        if ($checkboxes[$i] == 'lightColor') {
+            $vals .= "'red',";
+        } else if ($checkboxes[$i] == 'securityS') {
+            $vals .= "'low',";
+        } else {
+            $vals .= "0,";
+        }
     }
+
+
 
     $room = rtrim($room, ", ");
     //echo ($room);
@@ -55,8 +63,7 @@ if (isset($_POST['addRoom'])) {
 
     $addDevice = "INSERT INTO {$chosenRoom} ({$room}, email, inputDate) VALUES({$vals} '{$email}', '{$date}')";
 
-    echo ($addDevice);
-
+    echo $addDevice;
     if (mysqli_query($conn, $addDevice)) {
         //success
     } else {
