@@ -1,5 +1,6 @@
 <?php
 $email = $_GET['variable'];
+date_default_timezone_set('Europe/Istanbul');
 $conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
 //write query for all infos
@@ -28,10 +29,23 @@ $emptyroom = $infos[0]['emptyroom'];
 
 if (isset($_POST['delete'])) {
     $value = $_POST['delete'];
+
+    //update the userinfo room to 0
     $sqlcode = "UPDATE userInfo SET {$value} = 0 WHERE email = '{$email}'";
     echo ($sqlcode);
 
     if (mysqli_query($conn, $sqlcode)) {
+        //success
+    } else {
+        echo 'query error: ' . mysqli_error($conn);
+    }
+
+    //give all the devices 0
+    $date = date('m/d/Y h:i:s a', time());
+
+    $sqlNull = "INSERT INTO {$value} (email, inputDate) VALUES('{$email}', '{$date}')";
+
+    if (mysqli_query($conn, $sqlNull)) {
         //success
     } else {
         echo 'query error: ' . mysqli_error($conn);
