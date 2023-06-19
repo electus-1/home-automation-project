@@ -472,9 +472,38 @@ if (isset($_POST['air'])) {
                     //shows the current tempature
                     echo '<img src="../img/display/temprature.png" width="50px" height="50px" img/> </br>';
 
-                    echo $tempature;
+                    echo "<div class='airtemp'  data-value='{$tempature}'></div>";
                     ?>
                 </p>
+
+                <script>
+                    //this script controls dynamic data values
+                    //get random number between max and min
+                    function getRandomArbitrary(min, max) {
+                        return Math.random() * (+max - +min) + +min;
+                    }
+
+                    function refresh() {
+
+                        let temp = div.getAttribute('data-value');
+                        console.log('Temp: ' + temp);
+                        let randomNumber = getRandomArbitrary((temp - 2), (+temp + 3));
+                        //raounds the number to 2 decimal place
+                        div.textContent = (Math.round(randomNumber * 100) / 100).toFixed(2);
+                    }
+
+                    const div = document.querySelector('.airtemp');
+
+                    let temp = div.getAttribute('data-value');
+                    console.log('Temp: ' + temp);
+                    let randomNumber = getRandomArbitrary((temp - 2), (+temp + 3));
+                    //raounds the number to 2 decimal place
+                    div.textContent = (Math.round(randomNumber * 100) / 100).toFixed(2);
+
+                    //run resresh every x ms
+                    setInterval(refresh, 2000);
+                </script>
+
                 <form action="" method="post" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;">
                     <div class="temp-control">
                         <input type="number" required name="temp" min="8" max="38" value="8" step=".01">
