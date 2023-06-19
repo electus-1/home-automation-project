@@ -68,6 +68,7 @@ mysqli_free_result($result);
                 <th>Lock</th>
                 <th>Roomba</th>
                 <th>Water Heater</th>
+                <th>Date/Time</th>
             </tr>
 
             <?php
@@ -136,6 +137,9 @@ mysqli_free_result($result);
                     } else {
                         echo ("<td>Heating Water</td>");
                     }
+
+                    //echoes date time
+                    echo ("<td>{$infos[$i]['inputDate']}</td>");
                 }
                 echo ("<tr>");
             }

@@ -2,6 +2,9 @@
 $email = $_GET['variable'];
 $room = $_GET['variable2'];
 
+//set the time zone
+date_default_timezone_set('Europe/Istanbul');
+
 //echo ($email . " and " . $room);
 $conn = mysqli_connect('localhost', 'algos', '123456', 'dbtest');
 
@@ -17,7 +20,7 @@ $infos2 = mysqli_fetch_all($result2, MYSQLI_ASSOC);
 
 $columns[] = '';
 
-for ($i = 0; $i < count($infos2); $i++) {
+for ($i = 0; $i < count($infos2) - 1; $i++) {
     $columns[$i] = $infos2[$i]['COLUMN_NAME'];
 }
 //print_r($columns);
@@ -77,8 +80,9 @@ if (isset($_POST['light'])) {
     $finalValue = substr($finalValue, 1);
 
 
+    $date = date('m/d/Y h:i:s a', time());
 
-    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue}, '{$date}')";
     //$new_sql = "UPDATE device SET light = '$new_value'";
     if (mysqli_query($conn, $new_sql)) {
         //success
@@ -116,7 +120,9 @@ if (isset($_POST['sound'])) {
 
     $finalValue = substr($finalValue, 1);
 
-    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
+    $date = date('m/d/Y h:i:s a', time());
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue}, '{$date}')";
     if (mysqli_query($conn, $new_sql)) {
         //success
     } else {
@@ -156,7 +162,9 @@ if (isset($_POST['lock'])) {
     $finalValue = substr($finalValue, 1);
 
 
-    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
+    $date = date('m/d/Y h:i:s a', time());
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue}, '{$date}')";
 
     if (mysqli_query($conn, $new_sql)) {
         //success
@@ -193,7 +201,9 @@ if (isset($_POST['roomba'])) {
 
     $finalValue = substr($finalValue, 1);
 
-    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
+    $date = date('m/d/Y h:i:s a', time());
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue}, '{$date}')";
 
     if (mysqli_query($conn, $new_sql)) {
         //success
@@ -230,7 +240,9 @@ if (isset($_POST['heater'])) {
 
     $finalValue = substr($finalValue, 1);
 
-    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
+    $date = date('m/d/Y h:i:s a', time());
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue}, '{$date}')";
 
     if (mysqli_query($conn, $new_sql)) {
         //success
@@ -268,7 +280,9 @@ if (isset($_POST['change-color'])) {
 
     $finalValue = substr($finalValue, 1);
 
-    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
+    $date = date('m/d/Y h:i:s a', time());
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue}, '{$date}')";
 
     mysqli_query($conn, $new_sql);
 
@@ -303,7 +317,9 @@ if (isset($_POST['security'])) {
 
     $finalValue = substr($finalValue, 1);
 
-    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
+    $date = date('m/d/Y h:i:s a', time());
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue}, '{$date}')";
 
     mysqli_query($conn, $new_sql);
 
@@ -335,7 +351,9 @@ if (isset($_POST['air'])) {
 
     $finalValue = substr($finalValue, 1);
 
-    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue})";
+    $date = date('m/d/Y h:i:s a', time());
+
+    $new_sql = "INSERT INTO {$room} VALUES ({$finalValue}, '{$date}')";
     mysqli_query($conn, $new_sql);
 
     //refresh the page to relod the database

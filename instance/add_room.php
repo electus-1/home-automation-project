@@ -49,15 +49,21 @@ if (isset($_POST['addRoom'])) {
     //echo ($room);
 
 
-    $addDevice = "INSERT INTO {$chosenRoom} ({$room}, email) VALUES({$vals} '{$email}')";
+    date_default_timezone_set('Europe/Istanbul');
 
-    //echo ($addDevice);
+    $date = date('m/d/Y h:i:s a', time());
+
+    $addDevice = "INSERT INTO {$chosenRoom} ({$room}, email, inputDate) VALUES({$vals} '{$email}', '{$date}')";
+
+    echo ($addDevice);
 
     if (mysqli_query($conn, $addDevice)) {
         //success
     } else {
         echo 'query error: ' . mysqli_error($conn);
     }
+
+    header("Location: ./customer_entry.php?variable={$email}");
 }
 
 ?>
@@ -77,69 +83,72 @@ if (isset($_POST['addRoom'])) {
 <body>
     <div class="header add-room-header">
         <h1>Add a room</h1>
-        
+
         <?php
         echo ("<a href='./customer_entry.php?variable={$email}'>Back</a>"); ?>
 
-<a href="../index.html">Logout</a>
+        <a href="../index.html">Logout</a>
 
     </div>
 
     <div class="room-form">
         <form action="" method="post">
-    <div id="room-selection"><label for="room-type">Room type: </label>
-            <select name="room-type" id="room-type">
-                <option value="kitchen" selected>Kitchen</option>
-                <option value="livingroom">Living Room</option>
-                <option value="hallway">Hallway</option>
-                <option value="bathroom">Bathroom</option>
-                <option value="bedroom">Bedroom</option>
-                <option value="emptyroom">Empty Room</option>
-            </select>
-</div>
-           
+            <div id="room-selection"><label for="room-type">Room type: </label>
+                <select name="room-type" id="room-type">
+                    <option value="kitchen" selected>Kitchen</option>
+                    <option value="livingroom">Living Room</option>
+                    <option value="hallway">Hallway</option>
+                    <option value="bathroom">Bathroom</option>
+                    <option value="bedroom">Bedroom</option>
+                    <option value="emptyroom">Empty Room</option>
+                </select>
+            </div>
+
             <br>
 
             <div id="devices">
 
-            <label for="devices">Choose Devices: </label>
-            <br>
+                <label for="devices">Choose Devices: </label>
+                <br>
                 <div>
-                <label for="light">Light Sensor</label>
-                <input type="checkbox" value="light" name="box[]" id="light">
+                    <label for="light">Light Sensor</label>
+                    <input type="checkbox" value="light" name="box[]" id="light">
                 </div>
                 <br>
-                <div>  <label for="lightColor">Light Color Sensor</label>
-                <input type="checkbox" value="lightColor" name="box[]" id="lightColor"></div>
+                <div> <label for="lightColor">Light Color Sensor</label>
+                    <input type="checkbox" value="lightColor" name="box[]" id="lightColor">
+                </div>
                 <br>
                 <div>
-                <label for="tempature">Temperature Capturer</label>
-                <input type="checkbox" value="tempature" name="box[]" id="tempature">
+                    <label for="tempature">Temperature Capturer</label>
+                    <input type="checkbox" value="tempature" name="box[]" id="tempature">
                 </div>
                 <br>
                 <div><label for="sound">Sound System</label>
-                <input type="checkbox" value="sound" name="box[]" id="sound"></div>
-                <br>
-                <div>
-                <label for="securityS">Security System </label>
-                <input type="checkbox" value="securityS" name="box[]" id="securityS">
+                    <input type="checkbox" value="sound" name="box[]" id="sound">
                 </div>
                 <br>
                 <div>
-                <label for="door">Door Locking Mechanism </label>
-                <input type="checkbox" value="door" name="box[]" id="door">
+                    <label for="securityS">Security System </label>
+                    <input type="checkbox" value="securityS" name="box[]" id="securityS">
                 </div>
-                
                 <br>
                 <div>
-                <label for="roomba">Roomba Cleaner</label>
-                <input type="checkbox" value="roomba" name="box[]" id="roomba">
+                    <label for="door">Door Locking Mechanism </label>
+                    <input type="checkbox" value="door" name="box[]" id="door">
                 </div>
-              
+
                 <br>
-                <div>   <label for="waterHeater">Water Heating System</label>
-                <input type="checkbox" value="waterHeater" name="box[]" id="waterHeater"></div>
-             
+                <div>
+                    <label for="roomba">Roomba Cleaner</label>
+                    <input type="checkbox" value="roomba" name="box[]" id="roomba">
+                </div>
+
+                <br>
+                <div> <label for="waterHeater">Water Heating System</label>
+                    <input type="checkbox" value="waterHeater" name="box[]" id="waterHeater">
+                </div>
+
                 <br>
             </div>
 
