@@ -246,6 +246,88 @@ tr:hover {
 }
 
 .probttn {
-  background-color: #1f2937;
+  background-color: #3882f6;
   color: white;
+}
+
+button[name="delete"] {
+  background-color: #F15A59;
+  color: white;
+}
+
+.addcust {
+ 
+}
+
+.modal {
+  display: flex;
+  position: relative;
+  border: 1px solid black;
+  border-radius: 12px;
+  flex-direction: column;
+  min-width: 40vw;
+  min-height: 50vh;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 11;
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+form.modal > input {
+  width: 60%;
+  height: 30px;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+form.modal > label {
+  font-size: 40px;
+  font-family: 'Alata', sans-serif;
+
+}
+
+form.modal > button {
+  background-color: #3882f6;
+  color: #f9faf8;
+  width: 160px;
+  height: 45px;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+}
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 20px;
+  margin-top: 10px;
+  color: red;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: yellow;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-wrapper {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }

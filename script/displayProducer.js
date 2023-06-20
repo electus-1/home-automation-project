@@ -13,6 +13,17 @@ window.addEventListener("load", function () {
     sessionStorage.removeItem("scrollPosition");
   }
 });
+const modalWrapper = document.querySelector(".modal-wrapper");
+document.querySelector(".add-customer-link").addEventListener("click", e => {
+  e.preventDefault();
+  e.stopPropagation();
+ 
+  modalWrapper.style.display = "flex";  
+})
+
+document.querySelector(".close").addEventListener("click", e=> {
+  modalWrapper.style.display = "none";  
+})
 
 /*
 //reload the page every 5 second to refresh the data

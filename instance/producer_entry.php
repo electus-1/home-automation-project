@@ -25,8 +25,35 @@ if ($email !== null) {
     } else {
         echo 'query error: ' . mysqli_error($conn);
     }
+    header("Location: ./producer_entry.php");
 }
 //print_r($infos);
+
+if (isset($_POST['login'])) {
+    $newEmail = filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $newPw = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    $sqlNewCus = "INSERT INTO pinfo VALUES ('{$newEmail}', {$newPw}, 0)";
+    echo $sqlNewCus;
+
+    if (mysqli_query($conn, $sqlNewCus)) {
+        //success
+    } else {
+        echo 'query error: ' . mysqli_error($conn);
+    }
+
+    $userInfoUpdate = "INSERT INTO userInfo VALUES ('{$newEmail}', 0, 0, 0, 0, 0, 0)";
+
+    if (mysqli_query($conn, $userInfoUpdate)) {
+        //success
+    } else {
+        echo 'query error: ' . mysqli_error($conn);
+    }
+
+    header("Location: ./producer_entry.php");
+}
+
+
 ?>
 
 
@@ -45,11 +72,10 @@ if ($email !== null) {
 <body>
     <div class="header">
         <h1>Producer Dashboard</h1>
+        <a href="" class="add-customer-link">Add Customer</a>
         <a href="../index.html">Logout</a>
 
-
     </div>
-
 
 
     <div class="table">
@@ -74,8 +100,22 @@ if ($email !== null) {
                 }
             }
             ?>
+
         </table>
     </div>
+
+    <div class="modal-wrapper">
+        <form class="modal" action="" method="POST">
+            <span class="close">&times;</span>
+            <label for="email">New Customer Mail:</label>
+            <input type="email" id="email" name="email" placeholder="yourmail@example.com" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="********" required>
+            <button type="submit" name="login" class="sign-up">Add</button>
+        </form>
+    </div>
+
+
 </body>
 
 </html>
